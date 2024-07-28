@@ -1,0 +1,15 @@
+{
+  "name": "manager",
+  "version": "1.0.0",
+  "description": "content manager for sera hp",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "kenryus",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}

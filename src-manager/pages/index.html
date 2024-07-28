@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>Content Manager</h1>
+
+    <p>Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</p>
+
+    <button hx-get="/api/hello"
+      hx-trigger="click"
+      hx-swap="afterend"
+      hx-target="#list"
+    >
+    Click Me!
+    </button>
+
+    <p id="list"></p>
+  </body>
+</html>

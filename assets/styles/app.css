@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url('../fonts/NotoSansJP-VariableFont_wght.ttf') format('truetype');
+}
+
+#App {
+  display: grid;
+  font-family: "Noto Sans JP";
+}
+
+body {
+  margin: 0;
+}

@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Page: edu-robot
-  </div>
+    <div>Page: edu-robot</div>
 </template>

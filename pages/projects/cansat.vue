@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Page: cansat
-  </div>
+    <div>Page: cansat</div>
 </template>

@@ -1,0 +1,23 @@
+{
+    "clubNameAbbreviation": "SERA",
+    "clubNameLong": "Space Engineering Research Association",
+    "copyrightYear": 2024,
+    "memberDepartmentRatio": {
+        "date": "2023-3-31",
+        "mechanicalEng": 10,
+        "elecAndComp": 5,
+        "elecControl": 4,
+        "civilEng": 1,
+        "architecture": 2
+    },
+    "memberGradeRatio": {
+        "date": "2022-3-31",
+        "first": 7,
+        "second": 4,
+        "third": 5,
+        "fourth": 1,
+        "fifth": 5
+    },
+    "advisorName": "枝本雅史(えだもとまさふみ)",
+    "headOfClub": "4年機械工学科 櫻井晴生"
+}

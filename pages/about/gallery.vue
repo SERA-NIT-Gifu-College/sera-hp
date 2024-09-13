@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Page: gallery
-  </div>
+    <div>Page: gallery</div>
 </template>

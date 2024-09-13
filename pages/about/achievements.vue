@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Page: achievements
-  </div>
+    <div>Page: achievements</div>
 </template>

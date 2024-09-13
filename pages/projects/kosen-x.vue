@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Page: kosen-x
-  </div>
+    <div>Page: kosen-x</div>
 </template>

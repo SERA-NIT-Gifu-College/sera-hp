@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, "../assets")));
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get('/api/hello', (req, res) => {
-    res.send('Hello World!');
+    res.send('<li>Hello World!</li>');
 });
 
 app.listen(port, () => {

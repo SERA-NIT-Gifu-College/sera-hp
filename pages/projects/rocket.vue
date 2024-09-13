@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Page: rocket
-  </div>
+    <div>Page: rocket</div>
 </template>

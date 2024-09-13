@@ -1,12 +1,15 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div>
     <TheHeader />
     Layout: default
-    <slot />
+    <div class="website-content">
+        <slot />
+    </div>
     <TheFooter />
-  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.website-content {
+    width: 90%;
+    margin: auto;
+}
+</style>

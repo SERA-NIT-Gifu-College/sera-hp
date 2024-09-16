@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Content Manager - new news</title>
+    <title>Content Manager - update news</title>
     <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         form fieldset {
@@ -26,15 +27,15 @@
     <div id="new-news">
         <div>
             <h3>New News</h3>
-            <form id="create-entry" hx-post="/api/news" hx-swap="none">
+            <form id="create-entry" hx-put="/api/news" hx-swap="none">
                 <fieldset>
                     <legend>Create Entry</legend>
                     <label for="entryType">Entry Type:</label>
                     <div>
-                        <input type="radio" id="entryType-article" name="entryType" value="0" checked>
-                        <label for="entryType-article">Article</label>
-                        <input type="radio" id="entryType-tweet" name="entryType" value="1">
-                        <label for="entryType-tweet">Tweet</label>
+                        <input type="radio" id="entry-type-article" name="entryType" value="0" checked>
+                        <label for="entry-type-article">Article</label>
+                        <input type="radio" id="entry-type-tweet" name="entryType" value="1">
+                        <label for="entry-type-tweet">Tweet</label>
                     </div>
 
                     <label for="cardContent">Card Content:</label>
@@ -51,8 +52,10 @@
 
                     <label for="coverImagePath">Cover Image Path (Optional):</label>
                     <input type="text" id="coverImagePath" name="coverImagePath">
+
+                    <input type="hidden" name="target" id="targetValue" value="test" />
                 </fieldset>
-                <button id="submit-button" type="submit">Create Entry</button>
+                <button id="submit-button" type="submit">Update Entry</button>
                 <a href="/index.html"><button role="none" type="button">Cancel</button></a>
             </form>
         </div>
@@ -66,6 +69,30 @@
         const markdownPreivew = document.getElementById('preview');
         const articleEditor = document.getElementById('article');
         const submitButton = document.getElementById('submit-button');
+        const cardContentInput = document.getElementById('cardContent');
+        const coverImagePathInput = document.getElementById('coverImagePath');
+        const linkPathInput = document.getElementById('linkPath');
+        const entryTypeArticleInput = document.getElementById('entry-type-article');
+        const entryTypeTweetInput = document.getElementById('entry-type-tweet');
+        const targetValueInput = document.getElementById('targetValue');
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetEntry = urlParams.get('target');
+
+        axios.get('/api/news', {params: {target: targetEntry}})
+            .then((response) => {
+                targetValueInput.value = response.data.date;
+                cardContentInput.value = response.data.cardContent;
+                coverImagePathInput.value = response.data.coverImagePath;
+                linkPathInput.value = response.data.linkPath.split('/')[2];
+                articleEditor.value = response.data.article;
+                markdownPreivew.innerHTML = marked.parse(articleEditor.value);
+                if (response.data.entryType == 0) {
+                    entryTypeArticleInput.checked = true;
+                } else if (response.data.entryType == 1) {
+                    entryTypeTweetInput.checked = true;
+                }
+            })
+            .catch((err) => {console.error(err)});
 
         articleEditor.addEventListener('input', () => {
             markdownPreivew.innerHTML = marked.parse(articleEditor.value);

@@ -2,14 +2,20 @@
   "name": "manager",
   "version": "1.0.0",
   "description": "content manager for sera hp",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js",
+    "dev": "nodemon --watch . --ignore pages"
   },
+  "type": "module",
   "author": "kenryus",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.3",
+    "nodemon": "^3.1.4"
   }
 }

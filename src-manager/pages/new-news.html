@@ -38,7 +38,7 @@
                     </div>
 
                     <label for="cardContent">Card Content:</label>
-                    <input type="text" id="cardContent" name="cardContent" required>
+                    <textarea type="text" id="cardContent" name="cardContent" required></textarea>
 
                     <label for="article">Content:</label>
                     <textarea id="article" name="article" rows="24" cols="80"></textarea>
@@ -58,17 +58,26 @@
         </div>
         <div>
             <h3>Preview</h3>
-            <div id="preview"></div>
+            <h4>Card Content</h4>
+            <div id="preview-card-content"></div>
+            <h4>Article</h4>
+            <div id="preview-article"></div>
         </div>
     </div>
 
     <script>
-        const markdownPreivew = document.getElementById('preview');
+        const markdownPreview = document.getElementById('preview-article');
+        const cardContentPreview = document.getElementById('preview-card-content');
         const articleEditor = document.getElementById('article');
+        const cardContentInput = document.getElementById('cardContent');
         const submitButton = document.getElementById('submit-button');
 
         articleEditor.addEventListener('input', () => {
-            markdownPreivew.innerHTML = marked.parse(articleEditor.value);
+            markdownPreview.innerHTML = marked.parse(articleEditor.value);
+        });
+
+        cardContentInput.addEventListener('input', () => {
+            cardContentPreview.innerHTML = marked.parse(cardContentInput.value);
         });
 
         submitButton.addEventListener('click', () => {

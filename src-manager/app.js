@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 app.get('/api/news-list', async (request, response) => {
     const database = new sqlite3.Database(path.join(__dirname, "../assets/databases/news.db"));
-    const sqlQuery = `SELECT * FROM news;`;
+    const sqlQuery = `SELECT * FROM news ORDER BY date DESC;`;
     try {
         const result = await asyncDatabaseRead(database, sqlQuery, (rows) => {
             let ret = "";

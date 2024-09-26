@@ -49,12 +49,17 @@ const mediaDropDownEntries: Array<DropDownEntry> = [
 </template>
 
 <style scoped>
+header {
+    width: 100vw;
+}
+
 .navigation-menu {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     line-height: 1.8;
     padding: 1.25rem 3rem;
+    width: calc(100% - 6rem);
     height: 64px;
     background: var(--deep-space);
 }
@@ -97,5 +102,6 @@ const mediaDropDownEntries: Array<DropDownEntry> = [
 #logo-img {
     width: 128px;
     height: auto;
+    background: transparent !important;
 }
 </style>

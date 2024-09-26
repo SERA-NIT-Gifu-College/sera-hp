@@ -5,13 +5,14 @@
 
 /**
  * Enums for viewport types
+ * @readonly
  * @enum {number}
  */
 export const enum ViewPortType {
     DESKTOP,
     TABLET,
-    MOBILE
-};
+    MOBILE,
+}
 
 /**
  * Vue Composable for getting window dimensions and viewport type based on width
@@ -27,11 +28,9 @@ export function useWindowDimensions() {
         height.value = window.innerHeight;
         if (width.value >= 1024) {
             viewPortType.value = ViewPortType.DESKTOP;
-        }
-        else if (width.value < 640) {
+        } else if (width.value < 640) {
             viewPortType.value = ViewPortType.MOBILE;
-        }
-        else {
+        } else {
             viewPortType.value = ViewPortType.TABLET;
         }
     }

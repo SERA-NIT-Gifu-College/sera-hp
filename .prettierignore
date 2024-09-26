@@ -27,3 +27,4 @@ src-manager
 *.md
 eslint.config.js
 nuxt.config.ts
+docs

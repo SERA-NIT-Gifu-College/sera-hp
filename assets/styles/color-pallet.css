@@ -1,12 +1,22 @@
 /* Colors form https://simplicable.com/colors/ */
 :root {
-    --deep-space: #000001;
-    --moonlight: #f6eed5;
     --andromeda: #abcdee;
-    --meteorite: #4a3b6a;
     --astronaut: #214559;
+    --comet2: #6e6970;
+    --deep-space: #000001;
+    --martian-moon: #c3e9d3;
+    --meteorite: #4a3b6a;
+    --moonlight: #f6eed5;
     --neptune1: #007dac;
-    --starlight: #efefe8;
-    --sunlight: #fff8df;
+    --neptune2: #7fbb9e;
     --ocean-blue: #009dc4;
+    --starlight1: #dde2e6;
+    --starlight5: #bcc0cc;
+    --starlight: #efefe8;
+    --starship: #e3dd39;
+    --sun2: #ef8e38;
+    --sunlight: #fff8df;
+    --uranus: #ace5ee;
+    --venus1: #eed053;
+    --venus2: #397c80;
 }

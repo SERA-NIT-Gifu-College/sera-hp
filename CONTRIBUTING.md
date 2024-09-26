@@ -15,7 +15,7 @@
 
 このレポジトリには２つのプロジェクトが存在する：
 
-1. SERA Website: メインプロジェクト、ソースディレクトリ：`assets/ components/ layouts/ pages/ public/ server/`
+1. SERA Website: メインプロジェクト、ソースディレクトリ：`assets/ components/ composables/ layouts/ pages/ public/ server/ utils/`
 2. Content Manager: ニュース等のためのデータベースの管理UI・API、ソースディレクトリ：`src-manager/`
 
 ## 問題の報告・新仕様の提案
@@ -92,7 +92,7 @@
 * 変数、定数、型名、関数名での連番は極力避ける
 * 変数、定数、型名、関数名には3文字以上の略称でない意味のある名前をつける
 * 変数、定数、関数名にはcamelCase
-* クラス名、型名、Vueコンポーネントファイル名・importにはPascalCase
+* クラス名、型名、`components/`下のVueコンポーネントファイル名にはPascalCase
 * CSSクラス、id、`pages/`下のVueファイル・フォルダにはkebab-case
 * 上記に該当しないものはcamelCaseで命名するものとする
 
@@ -117,8 +117,8 @@
 
 * コメントは英語、日本語どちらでも良い
 * 無駄で間違ったコメントは書かない(参照：[Don't Write Comments](https://www.youtube.com/watch?v=Bf7vDBBOBUA&ab_channel=CodeAesthetic))
-* 仕様、動作についてはコメントではなくドキュメンテーションに記載する
-* APIには簡潔なドキュメンテーションを書く([JSdoc](https://www.typescriptlang.org/ja/docs/handbook/jsdoc-supported-types.html))
+* 仕様、使い方についてはコメントではなくドキュメンテーションに記載する
+* APIには簡潔な英語のドキュメンテーションを書く([JSdoc](https://www.typescriptlang.org/ja/docs/handbook/jsdoc-supported-types.html))
 
 #### その他
 

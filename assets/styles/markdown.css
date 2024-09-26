@@ -1,0 +1,146 @@
+.markdown *:first-child {
+    margin-top: 0;
+}
+
+.markdown *:last-child {
+    margin-bottom: 0;
+}
+
+.markdown {
+    display: grid;
+    font-size: 16px;
+}
+
+.markdown > h1 {
+    color: var(--neptune1);
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.markdown > h2,
+.markdown > h3,
+.markdown > h4,
+.markdown > h5,
+.markdown > h6 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.markdown > h2 {
+    color: var(--neptune2);
+    font-size: 2.125em;
+}
+
+.markdown > h3 {
+    color: var(--venus2);
+    font-size: 1.75em;
+}
+
+.markdown > h4 {
+    color: var(--venus2);
+    font-size: 1.5em;
+}
+
+.markdown > h5,
+.markdown > h6 {
+    color: var(--venus2);
+    font-size: 1.25em;
+}
+
+.markdown > small {
+    margin: auto;
+}
+
+.markdown > p {
+    font-size: 1em;
+    line-height: 1.4em;
+}
+
+.markdown > p:has(img) {
+    width: fit-content;
+    margin: auto;
+    & > img {
+        width: 32rem;
+        height: auto;
+    }
+}
+
+.markdown > p > em,
+.markdown > p > strong {
+    color: var(--neptune1);
+}
+
+.markdown > p > em:has(strong) {
+    color: var(--sun2);
+}
+
+.markdown > blockquote {
+    position: relative;
+    width: fit-content;
+    color: var(--deep-space);
+    background-color: var(--starlight5);
+    padding: 1em 2em;
+    border-radius: 1em;
+    margin-left: 0;
+    &::after {
+        --offset-y: 15px;
+        position: absolute;
+        content: "";
+        width: 3px;
+        height: calc(100% - (var(--offset-y) * 2));
+        background-color: var(--neptune1);
+        top: var(--offset-y);
+        left: 0.75em;
+    }
+}
+
+.markdown > figcaption {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.markdown > ul li,
+.markdown > ol li {
+    line-height: 1.4em;
+}
+
+.markdown > ul li::marker,
+.markdown > ol li::marker {
+    font-weight: bold;
+    color: var(--neptune1);
+}
+
+.markdown > table {
+    min-width: 128px;
+    border: var(--deep-space) 1px solid;
+    border-collapse: collapse;
+    margin: auto;
+    & > thead {
+        background: var(--comet2);
+        color: var(--starlight);
+    }
+    & > tbody > tr {
+        background: var(--starlight1);
+    }
+    & > tbody > tr:nth-of-type(even) {
+        background: var(--starlight);
+    }
+    & th,
+    & td {
+        padding: 0 0.25em;
+        border: var(--deep-space) 1px solid;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .markdown > p:has(img) > img {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .markdown > h1 {
+        font-size: 2em;
+    }
+}

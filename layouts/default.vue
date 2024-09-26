@@ -1,6 +1,5 @@
 <template>
     <TheHeader />
-    Layout: default
     <div class="website-content">
         <slot />
     </div>
@@ -9,7 +8,14 @@
 
 <style scoped>
 .website-content {
-    width: 90%;
-    margin: auto;
+    display: grid;
+}
+
+@media screen and (max-width: 1024px) {
+    .website-content {
+        width: 100%;
+        margin: 0;
+        place-self: center;
+    }
 }
 </style>

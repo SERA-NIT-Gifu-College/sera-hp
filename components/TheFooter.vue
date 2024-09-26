@@ -30,7 +30,9 @@ const showThePast = (event: Event) => {
             </div>
             <div class="top-column">
                 <div class="summary">
-                    <h3>{{ SiteInfo.clubNameLong }}</h3>
+                    <h3>
+                        岐阜高専宇宙工学研究会 - {{ SiteInfo.clubNameLong }}
+                    </h3>
                     <p>
                         宇宙分野に興味ある学生が<wbr />集い、<wbr />宇宙理工学に<wbr />関する知識を<wbr />身に付けると共に、<wbr />
                         宇宙分野に関連する<wbr />各種競技会へ<wbr />参加して<wbr />人間力と実践力を<wbr />養うことを目的に<wbr />活動しています。
@@ -181,6 +183,7 @@ footer {
     & svg {
         width: auto;
         height: 56px;
+        background: transparent !important;
     }
 }
 

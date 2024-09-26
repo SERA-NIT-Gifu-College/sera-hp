@@ -3,21 +3,21 @@
     "clubNameLong": "Space Engineering Research Association",
     "copyrightYear": 2024,
     "memberDepartmentRatio": {
-        "date": "2023-3-31",
-        "mechanicalEng": 10,
-        "elecAndComp": 5,
-        "elecControl": 4,
-        "civilEng": 1,
-        "architecture": 2
+        "date": "2024-9-17",
+        "mechanicalEng": 12,
+        "elecAndComp": 3,
+        "elecControl": 14,
+        "civilEng": 2,
+        "architecture": 3
     },
     "memberGradeRatio": {
-        "date": "2022-3-31",
-        "first": 7,
-        "second": 4,
-        "third": 5,
+        "date": "2024-9-17",
+        "first": 14,
+        "second": 11,
+        "third": 7,
         "fourth": 1,
-        "fifth": 5
+        "fifth": 1
     },
-    "advisorName": "枝本雅史(えだもとまさふみ)",
-    "headOfClub": "4年機械工学科 櫻井晴生"
+    "advisorName": "佐藤敦（さとうあつい）",
+    "headOfClub": "５年機械工学科 瀨 仁一郎"
 }

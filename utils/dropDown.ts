@@ -5,6 +5,7 @@
 
 /**
  * Enum for interaction mode of DropDown component
+ * @readonly
  * @enum {string}
  */
 export const enum DropDownMode {
@@ -14,6 +15,7 @@ export const enum DropDownMode {
 
 /**
  * Enum for alignment of DropDown component
+ * @readonly
  * @enum {number}
  */
 export const enum DropDownAlignment {
@@ -24,8 +26,8 @@ export const enum DropDownAlignment {
 /**
  * Interface for the entry of DropDown menu
  * @typedef {object} DropDownEntry
- * @property {string} text - Text to be displayed on the menu
- * @property {string} link - Hyperlink to the page
+ * @property {string} text Text to be displayed on the menu
+ * @property {string} link Hyperlink to the page
  */
 interface DropDownEntry {
     text: string;
@@ -35,11 +37,11 @@ interface DropDownEntry {
 /**
  * Interface for the property of DropDown component
  * @typedef {object} DropDownProperty
- * @property {string} label - Label of the component
- * @property {(DropDownMode | string)} mode - Interaction mode of the component
- * @property {Array<DropDownEntry>} entries - Entries of DropDown menu
- * @property {boolean} showInMobile - Whether to show the component in mobile(<640px) environemnt
- * @property {(DropDownAlignment | number)=} alignment - Explicitly assign the alignment of the component
+ * @property {string} label Label of the component
+ * @property {(DropDownMode | string)} mode Interaction mode of the component
+ * @property {Array<DropDownEntry>} entries Entries of DropDown menu
+ * @property {boolean} showInMobile Whether to show the component in mobile(<640px) environemnt
+ * @property {(DropDownAlignment | number)=} alignment Explicitly assign the alignment of the component
  */
 interface DropDownProperty {
     label: string;

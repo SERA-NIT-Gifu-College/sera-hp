@@ -133,6 +133,7 @@ const handleFocusOutEvent = () => {
     font-weight: bold;
     position: absolute;
     top: auto;
+    z-index: 100;
     min-width: 100%;
     width: fit-content;
     text-wrap: nowrap;

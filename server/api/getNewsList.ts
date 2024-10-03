@@ -32,13 +32,14 @@ const getArticleListEventHandler = defineEventHandler(async (event: any) => {
             database,
             sql,
             (rows) => {
-                return rows;
+                return rows as Array<NewsEntry>;
             }
         );
     } catch (err: any) {
+        const error = err as Error;
         throw createError({
             statusCode: 500,
-            statusMessage: err.message,
+            statusMessage: error.message,
         });
     }
 

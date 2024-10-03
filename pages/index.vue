@@ -28,7 +28,7 @@ useSeoMeta(
             <h3>News</h3>
             <div></div>
             <ul id="news-list">
-                <li v-for="entry in data" :key="entry.date as number">
+                <li v-for="entry in data" :key="(entry.date as number)">
                     <small>
                         {{
                             new Date(entry.date as number).toLocaleDateString(
@@ -45,7 +45,7 @@ useSeoMeta(
                     ></article>
                     <NuxtLink
                         v-if="entry.entryType === EntryType.Article"
-                        :to="entry.linkPath as string"
+                        :to="(entry.linkPath as string)"
                     >
                         <Icon
                             name="material-symbols:keyboard-double-arrow-right-rounded"
@@ -65,8 +65,9 @@ useSeoMeta(
                 :data-height="16 * 70"
                 :data-width="16 * 33"
                 href="https://twitter.com/SERA_NITGC?ref_src=twsrc%5Etfw"
-                >Tweets by SERA_NITGC</a
             >
+                Tweets by SERA_NITGC
+            </a>
         </div>
     </main>
 </template>
@@ -74,7 +75,7 @@ useSeoMeta(
 <style scoped>
 main {
     display: grid;
-    grid: auto-flow / 4fr 1fr;
+    grid: auto-flow / 2fr 1fr;
 }
 
 #news-board {
@@ -118,7 +119,7 @@ main {
     & li > *:last-child {
         margin-right: 0;
     }
-    & li div {
+    & li .new-label {
         background-color: var(--sun2);
         padding: 0.25rem 0.5rem;
     }
@@ -137,7 +138,8 @@ main {
 
 #twitter {
     display: flex;
-    justify-content: center;
+    place-self: center;
+    width: fit-content;
     & > .twitter-timeline-rendered {
         display: unset;
         width: unset;
@@ -148,18 +150,22 @@ main {
 
 @media screen and (max-width: 1024px) {
     main {
-        width: calc(100vw - 2rem);
+        width: calc(100vw - 4rem);
+        margin: 0;
         place-self: center;
-        place-items: center;
-        grid: auto-flow / 1fr;
+        place-content: center;
+        grid: auto-flow / 75vw;
     }
 
     #news-board {
+        margin: 1rem 0;
         width: 90%;
     }
 
     #twitter {
+        margin: 1rem 0;
         width: 90%;
+        justify-self: center;
     }
 }
 </style>

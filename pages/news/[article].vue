@@ -40,6 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <PageTop text="News" image-path="/images/news-top.jpg" />
     <main>
         <img :src="(data?.coverImagePath as string) || '/sera-logo-text.svg'" />
         <div
@@ -52,6 +53,7 @@ onMounted(() => {
 
 <style scoped>
 main {
+    margin: unset;
     display: grid;
     width: 50%;
     height: fit-content;

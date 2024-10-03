@@ -6,9 +6,9 @@ const exploreDropDownEntries: Array<DropDownEntry> = [
     { text: "Home", link: "/" },
     { text: "Projects", link: "/projects" },
     { text: "CanSat", link: "/projects/cansat" },
-    { text: "Edu-Robot", link: "/projects/edu-robot" },
-    { text: "CubeSat Kosen-X", link: "/projects/kosen-x" },
     { text: "Rocket", link: "/projects/rocket" },
+    { text: "Edu-Robot", link: "/projects/edu-robot" },
+    { text: "CubeSat KOSEN-X", link: "/projects/kosen-x" },
     { text: "About", link: "/about" },
 ];
 

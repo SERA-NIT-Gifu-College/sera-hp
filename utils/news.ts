@@ -8,7 +8,7 @@
  * @readonly
  * @enum {number}
  */
-export const enum EntryType {
+const enum EntryType {
     Article,
     Tweet,
 }
@@ -47,3 +47,4 @@ interface NewsEntry {
 }
 
 export type { ArticleInfo, NewsEntry };
+export { EntryType };

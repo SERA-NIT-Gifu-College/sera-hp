@@ -40,7 +40,7 @@ const getArticleEventHandler = defineEventHandler(async (event: any) => {
             database,
             sql,
             (rows) => {
-                return rows[0];
+                return rows[0] as ArticleInfo;
             }
         );
         res = {
@@ -51,9 +51,10 @@ const getArticleEventHandler = defineEventHandler(async (event: any) => {
             coverImagePath: entry.coverImagePath,
         };
     } catch (err: any) {
+        const error = err as Error;
         throw createError({
             statusCode: 500,
-            statusMessage: err.message,
+            statusMessage: error.message,
         });
     }
 

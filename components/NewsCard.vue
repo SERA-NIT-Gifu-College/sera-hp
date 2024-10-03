@@ -8,11 +8,18 @@ const datePosted = new Date(
     property.newsEntry.date as number
 ).toLocaleDateString("ja-JP", { dateStyle: "medium" });
 
-const coverImagePath = ref<string>(property.newsEntry.coverImagePath ? property.newsEntry.coverImagePath : "/sera-logo-text.svg");
+const coverImagePath = ref<string>(
+    property.newsEntry.coverImagePath
+        ? property.newsEntry.coverImagePath
+        : "/sera-logo-text.svg"
+);
 </script>
 
 <template>
-    <div class="news-card" :style="{ backgroundImage: `url(${coverImagePath})`}">
+    <div
+        class="news-card"
+        :style="{ backgroundImage: `url(${coverImagePath})` }"
+    >
         <NuxtLink
             class="card-content"
             :to="property.newsEntry.linkPath"
@@ -23,19 +30,25 @@ const coverImagePath = ref<string>(property.newsEntry.coverImagePath ? property.
         >
             <p class="news-type article">記事</p>
             <p class="new" v-if="property.isNew">NEW!</p>
-            <p class="content">
+            <div class="content">
                 <article
-                    v-html="marked.parse(property.newsEntry.cardContent as string)"
+                    v-html="
+                        marked.parse(property.newsEntry.cardContent as string)
+                    "
                 ></article>
-            </p>
+            </div>
             <small>{{ datePosted }}</small>
         </NuxtLink>
         <div class="card-content" v-else>
             <p class="news-type tweet">お知らせ</p>
             <p class="new" v-if="property.isNew">NEW!</p>
-            <p class="content">
-                <article v-html="marked.parse(property.newsEntry.cardContent as string)"></article>
-            </p>
+            <div class="content">
+                <article
+                    v-html="
+                        marked.parse(property.newsEntry.cardContent as string)
+                    "
+                ></article>
+            </div>
             <small>{{ datePosted }}</small>
         </div>
     </div>
@@ -65,7 +78,7 @@ const coverImagePath = ref<string>(property.newsEntry.coverImagePath ? property.
     right: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255,255,255,0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(5px) brightness(55%);
     color: var(--starlight);
     text-decoration: none;
@@ -108,7 +121,7 @@ const coverImagePath = ref<string>(property.newsEntry.coverImagePath ? property.
 
 .card-content .tweet {
     background-color: var(--venus2);
-    color: var(--venus1);;
+    color: var(--venus1);
 }
 
 .card-content .article {

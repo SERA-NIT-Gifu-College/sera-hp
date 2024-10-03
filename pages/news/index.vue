@@ -4,8 +4,8 @@ const { data } = await useFetch("/api/getNewsList");
 
 <template>
     <PageTop
-        :text="'News'"
-        :image-path="'https://www.gifu-nct.ac.jp/gakuseikai/club/sera/img/subtop/sub_top_sample.jpg'"
+        text="News"
+        image-path="/images/news-top.jpg"
     />
     <main>
         <div class="news-list">

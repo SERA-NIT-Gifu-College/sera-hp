@@ -18,15 +18,15 @@ type asyncDatabaseVoidCallbackFunction = () => any;
  * @param {asyncDatabaseRowsCallbackFunction} callback callback to perform further operations on each row
  * @returns {Promise<Type>} Promise for database operation
  */
-const asyncDatabaseRead = <Type>(
+const asyncDatabaseRead = async <Type>(
     database: sqlite3.Database,
     sqlQuery: string,
     callback: asyncDatabaseRowsCallbackFunction
 ): Promise<Type> => {
     return new Promise((resolve, reject) => {
-        database.all(sqlQuery, (err: any, rows) => {
-            if (err) {
-                reject(err);
+        database.all(sqlQuery, (error: Error, rows: any) => {
+            if (error !== null) {
+                reject(error);
             } else {
                 resolve(callback(rows));
             }
@@ -42,15 +42,15 @@ const asyncDatabaseRead = <Type>(
  * @param {asyncDatabaseVoidCallbackFunction} callback callback to perform after the operation
  * @returns {Promise<Type>} Promise for database operation
  */
-const asyncDatabaseWrite = <Type>(
+const asyncDatabaseWrite = async <Type>(
     database: sqlite3.Database,
     sqlQuery: string,
     callback: asyncDatabaseVoidCallbackFunction
 ): Promise<Type> => {
     return new Promise((resolve, reject) => {
-        database.run(sqlQuery, (err: any) => {
-            if (err) {
-                reject(err);
+        database.run(sqlQuery, (error: Error) => {
+            if (error !== null) {
+                reject(error);
             } else {
                 resolve(callback());
             }

@@ -14,7 +14,7 @@ const property = defineProps<PageTopProperty>();
 div {
     display: flex;
     width: 100vw;
-    height: 25vh;
+    height: 12rem;
     margin: 0;
     background-repeat: no-repeat;
     background-position: center;
@@ -25,5 +25,12 @@ div {
     color: var(--starlight1);
     font-size: 36pt;
     font-weight: bold;
+}
+
+@media screen and (max-width: 640px) {
+    div {
+        font-size: 28pt;
+        height: 6rem;
+    }
 }
 </style>

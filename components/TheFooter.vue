@@ -31,7 +31,7 @@ const showThePast = (event: Event) => {
             <div class="top-column">
                 <div class="summary">
                     <h3>
-                        岐阜高専宇宙工学研究会 - {{ SiteInfo.clubNameLong }}
+                        岐阜高専<wbr />宇宙<wbr />工学<wbr />研究会 - {{ SiteInfo.clubNameLong }}
                     </h3>
                     <p>
                         宇宙分野に興味ある学生が<wbr />集い、<wbr />宇宙理工学に<wbr />関する知識を<wbr />身に付けると共に、<wbr />
@@ -195,6 +195,11 @@ footer {
     border-bottom: var(--sunlight) solid 3px;
 }
 
+.summary {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
 .links ul {
     list-style: none;
     font-weight: 600;
@@ -218,28 +223,28 @@ footer {
     list-style: none;
     display: flex;
     padding: 0;
-    li {
+    & > li {
         margin-right: 0.5rem;
-        a span {
+        & > a span {
             width: 48px;
             height: 48px;
         }
     }
-    li:first-child {
-        a {
+    & > li:first-child {
+        & > a {
             position: relative;
             display: block;
             width: 48px;
             height: 48px;
         }
-        a span {
+        & > a span {
             position: absolute;
         }
     }
-    li:last-child {
+    & > li:last-child {
         margin-right: 0;
     }
-    li:hover {
+    & > li:hover {
         transform: scale(120%);
         transition: all 0.2s ease;
     }
@@ -258,10 +263,6 @@ footer {
     .top-column {
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
-    }
-    .summary {
-        word-break: keep-all;
-        overflow-wrap: break-word;
     }
     .sns-list {
         display: block;

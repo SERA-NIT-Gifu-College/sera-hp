@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Content Manager - new gallery image</title>
+    <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+    <style>
+        form fieldset {
+            display: grid;
+            grid-auto-flow: row;
+        }
+
+        #new-news {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #preview {
+            border: black solid 1px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="new-gallery-image">
+        <h3></h3>
+        <form id="create-entry" hx-post="/api/gallery-image" hx-swap="none">
+            <fieldset>
+                <legend>Create Entry</legend>
+                <label for="imagePath">Image Path:</label>
+                <input type="text" name="imagePath" id="imagePath">
+                <label for="caption">Caption of Image:</label>
+                <input type="text" name="caption" id="caption">
+            </fieldset>
+            <button id="submit-button" type="submit">Create Entry</button>
+            <a href="/index.html">
+                <button role="none" type="button">
+                    Cancel
+                </button>
+            </a>
+        </form>
+    </div>
+
+    <script>
+        const submitButton = document.getElementById('submit-button');
+
+        submitButton.addEventListener('click', () => {
+            window.location.href = "/index.html";
+        });
+    </script>
+</body>

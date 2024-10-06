@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Content Manager - new news</title>
+    <link rel="stylesheet" href="/styles/markdown.css">
+    <link rel="stylesheet" href="/styles/color-pallet.css">
     <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -56,12 +58,12 @@
                 <a href="/index.html"><button role="none" type="button">Cancel</button></a>
             </form>
         </div>
-        <div>
+        <div id="preview">
             <h3>Preview</h3>
             <h4>Card Content</h4>
             <div id="preview-card-content"></div>
             <h4>Article</h4>
-            <div id="preview-article"></div>
+            <div id="preview-article" class="markdown"></div>
         </div>
     </div>
 

@@ -22,7 +22,7 @@ npm run dev # JSファイル変更時に自動リロードが入る開発サー�
 
 ## データベース
 
-テーブル: news
+### ファイル： news.db / テーブル: news
 
 * id - PRIMARY KEY - 整数
 * date - Unix時間 - 整数
@@ -31,6 +31,12 @@ npm run dev # JSファイル変更時に自動リロードが入る開発サー�
 * article - Markdownで書かれた記事 - 文字列(Markdown)
 * linkPath - ニュースリストで表示されるリンク先 - 文字列
 * coverImagePath - ニュースリストで表示される画像へのパス - 文字列
+
+### ファイル: gallery.db / テーブル: gallery
+
+* id - PRIMARY KEY - 整数
+* imagePath - 画像へのパス - 文字列
+* caption - 画像の説明文 - 文字列
 
 ## API(RESTful)
 
@@ -41,3 +47,10 @@ npm run dev # JSファイル変更時に自動リロードが入る開発サー�
     * DELETE: Unix時間で特定されたニュースを削除する - `?target=<Unix時間>`
 * `/api/news-list`
     * GET: 全ニュースの情報を取得する
+
+* `/api/gallery-image`
+    * GET(`/`): IDで指定された画像へのパスと説明文を取得する - `?target=<ID>`
+    * GET(`/list`): 全画像の情報を取得する
+    * POST: 新しい画像の情報を追加する
+    * PUT: 画像の情報を更新する
+    * DELETE: IDで指定された画像の情報を削除する - `?target=<ID>`

@@ -48,10 +48,6 @@ const handleFocusOutEvent = () => {
             mouseover: handleMouseHoverEvent,
             mouseleave: handleMouseHoverEvent,
         }"
-        v-if="
-            (showInMobile === true && viewPortType !== ViewPortType.DESKTOP) ||
-            (showInMobile === false && viewPortType !== ViewPortType.MOBILE)
-        "
     >
         <button
             class="dropdown-label"

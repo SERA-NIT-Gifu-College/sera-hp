@@ -27,7 +27,6 @@ main {
     margin: var(--main-margin-top-bottom) var(--main-margin-left-right);
 }
 
-
 html {
     font-size: 16px;
     scrollbar-width: none;

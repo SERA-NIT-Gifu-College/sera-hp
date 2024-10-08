@@ -40,14 +40,12 @@ interface DropDownEntry {
  * @property {string} label Label of the component
  * @property {(DropDownMode | string)} mode Interaction mode of the component
  * @property {Array<DropDownEntry>} entries Entries of DropDown menu
- * @property {boolean} showInMobile Whether to show the component in mobile(<640px) environemnt
  * @property {(DropDownAlignment | number)=} alignment Explicitly assign the alignment of the component
  */
 interface DropDownProperty {
     label: string;
     mode: DropDownMode | string;
     entries: Array<DropDownEntry>;
-    showInMobile: boolean;
     alignment?: DropDownAlignment | number;
 }
 

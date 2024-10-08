@@ -1,19 +1,24 @@
 <script setup lang="ts">
 const { data } = await useFetch("/api/getNewsList");
+
+useSeoMeta(
+    generateSeoMeta(
+        "News",
+        "岐阜高専宇宙工学研究会からのニュースです。",
+        "/sera-logo-text.svg"
+    )
+);
 </script>
 
 <template>
-    <PageTop
-        text="News"
-        image-path="/images/news-top.jpg"
-    />
+    <PageTop text="News" image-path="/images/news-top.jpg" />
     <main>
         <div class="news-list">
             <NewsCard
                 v-for="article in data"
                 :key="article.date as number"
                 :news-entry="article"
-                :is-new="data?.indexOf(article) < 2"
+                :is-new="(data?.indexOf(article) as number) < 2"
             ></NewsCard>
         </div>
     </main>

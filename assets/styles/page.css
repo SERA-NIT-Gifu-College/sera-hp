@@ -1,0 +1,62 @@
+main {
+    display: grid;
+    width: 50%;
+    justify-self: center;
+}
+
+section {
+    display: block;
+}
+
+img {
+    width: 20rem;
+    height: auto;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+.float-right {
+    float: right;
+    margin-left: 2rem;
+}
+
+.float-left {
+    float: left;
+    margin-right: 2rem;
+}
+
+a,
+h2 {
+    color: var(--neptune1);
+}
+
+a:visited {
+    color: var(--neptune1);
+}
+
+h3 {
+    color: var(--neptune2);
+}
+
+h4 {
+    color: var(--martian);
+}
+
+strong {
+    color: var(--sun4);
+}
+
+@media screen and (max-width: 1024px) {
+    main {
+        width: 90%;
+        margin: 1rem;
+    }
+    section {
+        display: inherit;
+    }
+    img {
+        margin: auto !important;
+    }
+}

@@ -11,6 +11,16 @@
     font-size: 16px;
 }
 
+.markdown .float-left {
+    float: left;
+    margin-right: 1rem;
+}
+
+.markdown .float-right {
+    float: right;
+    margin-left: 1rem;
+}
+
 .markdown > h1 {
     color: var(--neptune1);
     font-size: 2.5em;
@@ -66,12 +76,36 @@
     }
 }
 
-.markdown > p > em,
-.markdown > p > strong {
+.markdown > span {
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    & > p > a > img {
+        width: 32rem;
+        height: auto;
+    }
+    & > p > a::after {
+        position: absolute;
+        content: "Youtube →";
+        display: flex;
+        height: 2rem;
+        bottom: 0.26rem;
+        right: 0;
+        background: #ff0000;
+        color: white;
+        padding: 0.25rem;
+        font-weight: bolder;
+        font-style: oblique;
+        place-items: center;
+    }
+}
+
+.markdown em,
+.markdown strong {
     color: var(--neptune1);
 }
 
-.markdown > p > em:has(strong) {
+.markdown em > strong {
     color: var(--sun2);
 }
 

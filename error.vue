@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NuxtError } from "#app";
 
-const props = defineProps({
+const property = defineProps({
     error: Object as () => NuxtError,
 });
 
@@ -13,8 +13,8 @@ definePageMeta({
 <template>
     <NuxtLayout>
         <div>
-            <h1>{{ error?.statusCode }}</h1>
-            <p>{{ error?.message }}</p>
+            <h1>{{ property.error?.statusCode }}</h1>
+            <p>{{ property.error?.message }}</p>
             <NuxtLink to="/">戻る</NuxtLink>
         </div>
     </NuxtLayout>

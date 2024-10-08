@@ -14,7 +14,7 @@ const property = defineProps<PageTopProperty>();
 div {
     display: flex;
     width: 100vw;
-    height: 12rem;
+    height: 16rem;
     margin: 0;
     background-repeat: no-repeat;
     background-position: center;

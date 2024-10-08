@@ -17,7 +17,7 @@ const basicRules = {
             "ignoreArrayIndexes": true,
             "ignoreClassFieldInitialValues": true,
             "enforceConst": true,
-            "ignore": [0]
+            "ignore": [0, 1, -1]
         }
     ],
     "dot-notation": "error",

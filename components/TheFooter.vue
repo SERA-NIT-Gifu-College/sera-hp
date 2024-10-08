@@ -31,15 +31,16 @@ const showThePast = (event: Event) => {
             <div class="top-column">
                 <div class="summary">
                     <h3>
-                        岐阜高専<wbr />宇宙<wbr />工学<wbr />研究会 - {{ SiteInfo.clubNameLong }}
+                        岐阜高専<wbr />宇宙<wbr />工学<wbr />研究会 -
+                        {{ SiteInfo.clubNameLong }}
                     </h3>
                     <p>
                         宇宙分野に興味ある学生が<wbr />集い、<wbr />宇宙理工学に<wbr />関する知識を<wbr />身に付けると共に、<wbr />
                         宇宙分野に関連する<wbr />各種競技会へ<wbr />参加して<wbr />人間力と実践力を<wbr />養うことを目的に<wbr />活動しています。
                     </p>
-                    <NuxtLink to="/about/sera"
-                        >About {{ SiteInfo.clubNameAbbreviation }}</NuxtLink
-                    >
+                    <NuxtLink to="/about/sera">
+                        About {{ SiteInfo.clubNameAbbreviation }}
+                    </NuxtLink>
                 </div>
                 <div class="links">
                     <ul>
@@ -64,12 +65,12 @@ const showThePast = (event: Event) => {
                                 </li>
                                 <li>
                                     <NuxtLink to="/projects/kosen-x">
-                                        CubeSat Kosen-x
+                                        CubeSat KOSEN-X
                                     </NuxtLink>
                                 </li>
                                 <li>
-                                    <NuxtLink to="/projects/edu-robot">
-                                        Edu-Robot
+                                    <NuxtLink to="/projects/education">
+                                        教育プロジェクト
                                     </NuxtLink>
                                 </li>
                             </ul>
@@ -116,6 +117,14 @@ const showThePast = (event: Event) => {
                                 target="_blank"
                             >
                                 <Icon name="simple-icons:instagram" />
+                            </NuxtLink>
+                        </li>
+                        <li>
+                            <NuxtLink
+                                to="https://github.com/SERA-NIT-Gifu-College"
+                                target="_blank"
+                            >
+                                <Icon name="simple-icons:github" />
                             </NuxtLink>
                         </li>
                     </ul>
@@ -224,7 +233,7 @@ footer {
     display: flex;
     padding: 0;
     & > li {
-        margin-right: 0.5rem;
+        margin: 0 0.5rem;
         & > a span {
             width: 48px;
             height: 48px;

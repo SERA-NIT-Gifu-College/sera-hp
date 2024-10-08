@@ -28,29 +28,30 @@ useSeoMeta(
             <h3>News</h3>
             <div></div>
             <ul id="news-list">
-                <li v-for="entry in data" :key="(entry.date as number)">
-                    <small>
-                        {{
-                            new Date(entry.date as number).toLocaleDateString(
-                                "ja-JP",
-                                { dateStyle: "medium" }
-                            )
-                        }}
-                    </small>
-                    <div class="new-label" v-if="data?.indexOf(entry) < 2">
-                        NEW!
+                <li v-for="entry in data" :key="entry.date as number">
+                    <div>
+                        <small>
+                            {{
+                                new Date(
+                                    entry.date as number
+                                ).toLocaleDateString("ja-JP", {
+                                    dateStyle: "medium",
+                                })
+                            }}
+                        </small>
+                        <div class="new-label" v-if="data?.indexOf(entry) < 2">
+                            NEW!
+                        </div>
                     </div>
                     <article
                         v-html="marked.parse(entry.cardContent as string)"
                     ></article>
                     <NuxtLink
                         v-if="entry.entryType === EntryType.Article"
-                        :to="(entry.linkPath as string)"
+                        :to="entry.linkPath as string"
                     >
-                        <Icon
-                            name="material-symbols:keyboard-double-arrow-right-rounded"
-                        />
-                        Read More
+                        <Icon name="material-symbols:arrow-forward-rounded" />
+                        <div>Read More</div>
                     </NuxtLink>
                 </li>
             </ul>
@@ -62,7 +63,7 @@ useSeoMeta(
                 data-dnt="true"
                 data-align="center"
                 data-theme="dark"
-                :data-height="16 * 70"
+                :data-height="16 * 40"
                 :data-width="16 * 33"
                 href="https://twitter.com/SERA_NITGC?ref_src=twsrc%5Etfw"
             >
@@ -115,13 +116,19 @@ main {
     }
     & li > *:first-child {
         margin-left: 0;
+        display: flex;
+        flex-direction: row;
     }
     & li > *:last-child {
         margin-right: 0;
     }
+    & li small {
+        align-content: center;
+    }
     & li .new-label {
         background-color: var(--sun2);
         padding: 0.25rem 0.5rem;
+        margin: auto 0.5rem;
     }
     & li a {
         text-decoration: none;
@@ -141,10 +148,10 @@ main {
     place-self: center;
     width: fit-content;
     & > .twitter-timeline-rendered {
-        display: unset;
-        width: unset;
-        max-width: unset;
-        margin: unset;
+        display: unset !important;
+        width: unset !important;
+        max-width: unset !important;
+        margin: unset !important;
     }
 }
 
@@ -162,10 +169,36 @@ main {
         width: 90%;
     }
 
+    #news-list {
+        & li {
+            min-height: 5rem;
+        }
+        & li > *:first-child {
+            flex-direction: column;
+        }
+        & li .new-label {
+            margin: 0.5rem auto;
+        }
+        & li a div {
+            display: none;
+        }
+        & li a span {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
     #twitter {
         margin: 1rem 0;
         width: 90%;
         justify-self: center;
+        justify-content: center;
+        position: relative;
+        & > .twitter-timeline-rendered iframe {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            translate: -50% -50%;
+        }
     }
 }
 </style>

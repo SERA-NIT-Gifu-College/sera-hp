@@ -7,7 +7,7 @@ const exploreDropDownEntries: Array<DropDownEntry> = [
     { text: "Projects", link: "/projects" },
     { text: "CanSat", link: "/projects/cansat" },
     { text: "Rocket", link: "/projects/rocket" },
-    { text: "Edu-Robot", link: "/projects/edu-robot" },
+    { text: "Edu-Robot", link: "/projects/education" },
     { text: "CubeSat KOSEN-X", link: "/projects/kosen-x" },
     { text: "About", link: "/about" },
 ];
@@ -27,7 +27,7 @@ const mediaDropDownEntries: Array<DropDownEntry> = [
                     :mode="DropDownMode.onClick"
                     :alignment="DropDownAlignment.Left"
                     :entries="exploreDropDownEntries"
-                    :show-in-mobile="false"
+                    class="left-dropdown"
                 />
             </div>
             <div id="logo-link">
@@ -41,7 +41,7 @@ const mediaDropDownEntries: Array<DropDownEntry> = [
                     :mode="DropDownMode.onClick"
                     :alignment="DropDownAlignment.Right"
                     :entries="mediaDropDownEntries"
-                    :show-in-mobile="false"
+                    class="right-dropdown"
                 />
             </div>
         </div>
@@ -51,6 +51,9 @@ const mediaDropDownEntries: Array<DropDownEntry> = [
 <style scoped>
 header {
     width: 100vw;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .navigation-menu {
@@ -103,5 +106,12 @@ header {
     width: 128px;
     height: auto;
     background: transparent !important;
+}
+
+@media screen and (max-width: 640px) {
+    .left-dropdown,
+    .right-dropdown {
+        display: none;
+    }
 }
 </style>

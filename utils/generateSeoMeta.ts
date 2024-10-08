@@ -31,18 +31,41 @@ export function generateSeoMeta(
     imagePath: string,
     type?: "website" | "article"
 ): UseSeoMetaInput {
+    const titleComposer = (title: string): string => {
+        return title + " - 岐阜高専宇宙工学研究会";
+    };
+
+    const descriptionComposer = (description: string): string => {
+        return (
+            description +
+            " - 岐阜高専宇宙工学研究会【SERA】公式ホームページです。航空や宇宙に興味がある学生が所属しており、モデルロケットや缶サット製作などを中心に宇宙に関する知識を高めるために活動しています。"
+        );
+    };
+
     return {
         title: title,
-        ogTitle: title + " - 岐阜高専宇宙工学研究会",
-        twitterTitle: title + " - 岐阜高専宇宙工学研究会",
-        description: description,
-        ogDescription: description,
-        twitterDescription: description,
+        ogTitle: titleComposer(title),
+        twitterTitle: titleComposer(title),
+        description: descriptionComposer(description),
+        ogDescription: descriptionComposer(description),
+        twitterDescription: descriptionComposer(description),
         ogImage: imagePath,
         twitterImage: imagePath,
         twitterCard: "summary",
+        twitterSite: "@SERA_NITGC",
         charset: "utf-8",
         ogLocale: "ja_JP",
         ogType: type || "website",
+        articleTag: [
+            "宇宙工学研究会",
+            "SERA",
+            "岐阜高専",
+            "岐阜工業高等専門学校",
+            "クラブ活動",
+            "部活動",
+            "同好会",
+            "宇宙",
+            "研究会",
+        ],
     };
 }

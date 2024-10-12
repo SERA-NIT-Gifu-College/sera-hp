@@ -12,6 +12,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="News" image-path="/images/news-top.jpg" />
+    <PankuzuList />
     <main>
         <div class="news-list">
             <NewsCard

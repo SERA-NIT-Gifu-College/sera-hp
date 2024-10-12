@@ -10,6 +10,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="教育プロジェクト" image-path="/images/page-top.jpg" />
+    <PankuzuList current-page-name="教育プロジェクト" />
     <main>
         <section>
             <h2>新入生研修</h2>

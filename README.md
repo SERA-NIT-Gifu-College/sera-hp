@@ -28,7 +28,10 @@ npm run generate # 静的サイトを生成
 ## 便利・重要なファイル/フォルダ
 
 * `assets/databases/news.db`: ニュースを管理しているsqliteデータベース
+* `assets/databases/gallery.db`: 写真集で使用されている画像のURLと説明文を管理しているsqliteデータベース
 * `assets/siteinfo.json`: 部長と顧問の名前、コピーライトの年、メンバーの学科・学年ごとの人数、など更新があまりされない情報を集めたファイル、`import`して使う
 * `assets/achievements.json`: 活動実績に表示される参加・受賞歴を集めたファイル
+* `assets/pankuzuEntries.json`: パンくずリストで使用される主なページのリンクと名前の紐付けが列挙されている
 * `docs/`: `typedoc`で生成されたドキュメンテーションが入っている、`python -m http.server`などで`localhost`にホストして読む
 * `dist/`, `.output/`: `npm run generate`で生成された静的ウェブサイト本体、プロダクションレディーな状態 `dist/`は`.output/`へのリンクである
+

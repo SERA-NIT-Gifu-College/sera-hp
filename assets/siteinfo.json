@@ -18,6 +18,10 @@
         "fourth": 1,
         "fifth": 1
     },
-    "advisorName": "佐藤 敦（さとう あつし）",
+    "advisor": {
+        "name": "佐藤 敦（さとう あつし）",
+        "department": "機械工学科",
+        "description": "精密加工に関する研究をされています。"
+    },
     "headOfClub": "５年機械工学科 瀨 仁一郎"
 }

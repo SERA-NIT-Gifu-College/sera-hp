@@ -10,6 +10,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="CubeSat KOSEN-X" image-path="/images/page-top.jpg" />
+    <PankuzuList current-page-name="CubeSat KOSEN-X" />
     <main>
         <section>
             <p>

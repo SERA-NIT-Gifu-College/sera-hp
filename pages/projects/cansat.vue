@@ -10,6 +10,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="CanSat開発チーム" image-path="/images/page-top.jpg" />
+    <PankuzuList current-page-name="CanSat開発チーム" />
     <main>
         <section>
             <img

@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import type { DropDownProperty } from "#imports";
+import { DropDownAlignment, type DropDownProperty } from "#imports";
 
 const property = defineProps<DropDownProperty>();
 
 const isOpen = ref<boolean>(false);
-const showInMobile = ref<boolean>(property.showInMobile);
-const { viewPortType } = useWindowDimensions();
 
 const listAlignment = ref<typeof DropDownAlignment | number>(
-    property.alignment | DropDownAlignment.Left
+    property.alignment as DropDownAlignment | DropDownAlignment.Left
 );
 
 const alignmentClass = computed(() => ({

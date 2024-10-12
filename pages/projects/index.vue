@@ -10,6 +10,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="Projects" image-path="/images/page-top.jpg" />
+    <PankuzuList />
     <main>
         <ul class="cards-list">
             <li>

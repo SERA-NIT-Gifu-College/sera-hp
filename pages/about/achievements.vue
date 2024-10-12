@@ -12,6 +12,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="活動実績" image-path="/images/page-top.jpg" />
+    <PankuzuList current-page-name="活動実績" />
     <main>
         <section>
             <p>

@@ -29,8 +29,10 @@ div {
 
 @media screen and (max-width: 640px) {
     div {
-        font-size: 28pt;
+        font-size: 24pt;
         height: 6rem;
+        width: calc(100vw - 2rem);
+        padding: 1rem;
     }
 }
 </style>

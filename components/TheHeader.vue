@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import LogoSVG from "public/sera-logo-no-text.svg";
+import SiteInfo from "~/assets/siteinfo.json";
 import type { DropDownEntry } from "~/utils/dropDown";
+
+const { viewPortType } = useWindowDimensions();
 
 const exploreDropDownEntries: Array<DropDownEntry> = [
     { text: "Home", link: "/" },
     { text: "Projects", link: "/projects" },
     { text: "CanSat", link: "/projects/cansat" },
     { text: "Rocket", link: "/projects/rocket" },
-    { text: "Edu-Robot", link: "/projects/education" },
+    { text: "Education", link: "/projects/education" },
     { text: "CubeSat KOSEN-X", link: "/projects/kosen-x" },
     { text: "About", link: "/about" },
 ];
@@ -15,6 +18,23 @@ const exploreDropDownEntries: Array<DropDownEntry> = [
 const mediaDropDownEntries: Array<DropDownEntry> = [
     { text: "News", link: "/news" },
     { text: "Gallery", link: "/about/gallery" },
+];
+
+const hamburgerMenuEntries: Array<DropDownEntry> = [
+    { text: "Home", link: "/" },
+    { text: "News", link: "/news" },
+    { text: "Projects", link: "/projects" },
+    { text: "Rocket", link: "/projects/rocket" },
+    { text: "CanSat", link: "/projects/cansat" },
+    { text: "CubeSat KOSEN-X", link: "/projects/kosen-x" },
+    { text: "教育プロジェクト", link: "/projects/education" },
+    { text: `About ${SiteInfo.clubNameAbbreviation}`, link: "/about/sera" },
+    { text: "活動実績", link: "/about/achievements" },
+    { text: "写真集", link: "/about/gallery" },
+    {
+        text: "中学生・新入生向け",
+        link: "/about/for-middle-schoolers-and-new-comers"
+    },
 ];
 </script>
 
@@ -42,6 +62,10 @@ const mediaDropDownEntries: Array<DropDownEntry> = [
                     :alignment="DropDownAlignment.Right"
                     :entries="mediaDropDownEntries"
                     class="right-dropdown"
+                />
+                <HamburgerMenu
+                    :entries="hamburgerMenuEntries"
+                    v-if="viewPortType === ViewPortType.MOBILE"
                 />
             </div>
         </div>
@@ -109,6 +133,10 @@ header {
 }
 
 @media screen and (max-width: 640px) {
+    .navigation-menu {
+        padding-inline: 1rem;
+        width: calc(100% - 2rem);
+    }
     .left-dropdown,
     .right-dropdown {
         display: none;

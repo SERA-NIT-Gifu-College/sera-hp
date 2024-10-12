@@ -3,6 +3,7 @@
     <div class="website-content">
         <slot />
     </div>
+    <BackToTop />
     <TheFooter />
 </template>
 

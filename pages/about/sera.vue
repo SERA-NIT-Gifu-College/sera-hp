@@ -12,6 +12,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="SERAについて" image-path="/images/page-top.jpg" />
+    <PankuzuList current-page-name="SERAについて" />
     <main>
         <section>
             <img src="/sera-logo-text.svg" alt="SERA Logo" class="float-left" />

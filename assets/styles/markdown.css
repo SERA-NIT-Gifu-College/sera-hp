@@ -177,4 +177,10 @@
     .markdown > h1 {
         font-size: 2em;
     }
+    .markdown > span {
+        & > p > a > img {
+            width: 16rem;
+            height: auto;
+        }
+    }
 }

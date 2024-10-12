@@ -2,8 +2,8 @@
 const { data } = await useFetch("/api/getGalleryImages");
 
 enum Direction {
-    FORWARD,
-    BACKWARD,
+    BACKWARD = -1,
+    FORWARD = 1,
 }
 
 const showViewer = ref<boolean>(false);
@@ -26,7 +26,7 @@ const closeViewer = () => {
 
 const changeImage = (direction: number) => {
     const lastIndex = (data.value?.length as number) - 1;
-    const delta = direction === Direction.FORWARD ? 1 : -1;
+    const delta = direction;
     let newIndex = indexViewer.value + delta;
     if (newIndex < 0) {
         newIndex = lastIndex;
@@ -52,6 +52,7 @@ useSeoMeta(
 
 <template>
     <PageTop text="写真集" image-path="/images/page-top.jpg" />
+    <PankuzuList current-page-name="写真集" />
     <main>
         <p>大会や日々の活動の様子をアップロードしていきます</p>
         <div class="image-list">
@@ -61,8 +62,10 @@ useSeoMeta(
                 @click="openViewer(entry)"
                 :key="entry.id"
             >
-                <img :src="entry.imagePath" :alt="entry.caption" />
-                <figcaption>{{ entry.caption }}</figcaption>
+                <figure>
+                    <img :src="entry.imagePath" :alt="entry.caption" />
+                    <figcaption>{{ entry.caption }}</figcaption>
+                </figure>
             </div>
         </div>
         <Transition name="image-viewer-transition">
@@ -71,7 +74,7 @@ useSeoMeta(
                     <Icon name="ic:baseline-close" />
                 </button>
                 <img :src="imagePathViewer" :alt="captionViewer" />
-                <figcaption>{{ captionViewer }}</figcaption>
+                <p>{{ captionViewer }}</p>
                 <button @click="changeImage(Direction.FORWARD)" class="next">
                     <Icon name="material-symbols:arrow-forward-rounded" />
                 </button>
@@ -115,13 +118,13 @@ main {
     transition: scale 0.2s ease-in-out;
 }
 
-.image-thumbnail img {
+.image-thumbnail > figure > img {
     width: 15rem;
     height: 10rem;
     object-fit: cover;
 }
 
-.image-thumbnail figcaption {
+.image-thumbnail > figure > figcaption {
     width: 15rem;
     text-align: center;
 }
@@ -152,11 +155,12 @@ main {
     align-self: center;
 }
 
-.image-viewer figcaption {
+.image-viewer p {
     color: var(--sunlight);
     font-size: 24pt;
     grid-area: caption;
     justify-self: center;
+    align-self: flex-end;
 }
 
 .image-viewer .close {

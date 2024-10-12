@@ -45,10 +45,14 @@ const showThePast = (event: Event) => {
                 <div class="links">
                     <ul>
                         <li>
-                            <NuxtLink to="/"> Home </NuxtLink>
-                        </li>
-                        <li>
-                            <NuxtLink to="/news"> News </NuxtLink>
+                            <ul style="padding-left: 0">
+                                <li>
+                                    <NuxtLink to="/"> Home </NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink to="/news"> News </NuxtLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <NuxtLink to="/projects"> Projects </NuxtLink>
@@ -76,9 +80,32 @@ const showThePast = (event: Event) => {
                             </ul>
                         </li>
                         <li>
-                            <NuxtLink to="/about/sera">
-                                About {{ SiteInfo.clubNameAbbreviation }}
-                            </NuxtLink>
+                            <NuxtLink to="/about">About</NuxtLink>
+                            <ul>
+                                <li>
+                                    <NuxtLink to="/about/sera">
+                                        About
+                                        {{ SiteInfo.clubNameAbbreviation }}
+                                    </NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink to="/about/achievements">
+                                        活動実績
+                                    </NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink to="/about/gallery">
+                                        写真集
+                                    </NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink
+                                        to="/about/for-middle-schoolers-and-new-comers"
+                                    >
+                                        中学生・新入生向け
+                                    </NuxtLink>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -157,6 +184,10 @@ const showThePast = (event: Event) => {
     opacity: 0;
 }
 
+ul {
+    list-style: none;
+}
+
 footer {
     background: var(--ocean-blue);
     color: var(--sunlight);
@@ -209,9 +240,11 @@ footer {
     overflow-wrap: break-word;
 }
 
-.links ul {
-    list-style: none;
+.links > ul {
     font-weight: 600;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
     & li {
         margin: 0.25rem 0;
     }
@@ -223,13 +256,12 @@ footer {
     }
 }
 
-.sns-list h3 {
+.sns-list > h3 {
     word-break: keep-all;
     overflow-wrap: break-word;
 }
 
-.sns-list ul {
-    list-style: none;
+.sns-list > ul {
     display: flex;
     padding: 0;
     & > li {
@@ -267,11 +299,21 @@ footer {
     }
 }
 
+/* Tablet Style */
+@media screen and (max-width: 1024px) {
+    .links > ul {
+        grid: repeat(2, 1fr) / repeat(2, 1fr);
+    }
+}
+
 /* Phone Style */
 @media screen and (max-width: 640px) {
     .top-column {
         grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: repeat(3, auto);
+    }
+    .links > ul {
+        grid: repeat(3, auto) / 1fr;
     }
     .sns-list {
         display: block;

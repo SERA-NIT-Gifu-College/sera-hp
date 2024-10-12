@@ -17,7 +17,7 @@ if (data.value === undefined || data.value === null) {
 onMounted(() => {
     const article = document.getElementById("article");
     const articleTitle = article?.getElementsByTagName("h1")[0];
-    const postedDate = new Date(data.value?.date).toLocaleDateString(
+    const postedDate = new Date(data.value?.date as number).toLocaleDateString(
         "ja-JP-u-ca-japanese",
         { dateStyle: "medium" }
     );

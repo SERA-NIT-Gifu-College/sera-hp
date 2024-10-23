@@ -1,4 +1,14 @@
 {
     // https://nuxt.com/docs/guide/concepts/typescript
-    "extends": "./.nuxt/tsconfig.json"
+    "extends": "./.nuxt/tsconfig.json",
+    "compilerOptions": {
+        "jsx": "preserve",
+        "jsxImportSource": "vue",
+        "allowJs": false,
+        "strict": true,
+        "target": "ES2023",
+        "resolveJsonModule": true,
+        "module": "Preserve",
+        "moduleDetection": "force"
+    }
 }

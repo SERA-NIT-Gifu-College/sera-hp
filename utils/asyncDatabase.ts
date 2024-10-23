@@ -17,6 +17,13 @@ type asyncDatabaseVoidCallbackFunction = () => any;
  * @param {string} sqlQuery SQL query to execute
  * @param {asyncDatabaseRowsCallbackFunction} callback callback to perform further operations on each row
  * @returns {Promise<Type>} Promise for database operation
+ * @example
+ * interface Person {
+ *     name: string;
+ *     age: number;
+ *     birthday: string;
+ * }
+ * let allRows = await asyncDatabaseRead<Array<Person>>(db, "SELECT * FROM people;", (rows) => { return rows; });
  */
 const asyncDatabaseRead = async <Type>(
     database: sqlite3.Database,
@@ -41,6 +48,8 @@ const asyncDatabaseRead = async <Type>(
  * @param {string} sqlQuery SQL query to execute
  * @param {asyncDatabaseVoidCallbackFunction} callback callback to perform after the operation
  * @returns {Promise<Type>} Promise for database operation
+ * @example
+ * await asyncDatabaseWrite(db, "INSERT INTO people (name, age, birthday) VALUES ('Ben', 21, '1970-1-1');", () => {});
  */
 const asyncDatabaseWrite = async <Type>(
     database: sqlite3.Database,

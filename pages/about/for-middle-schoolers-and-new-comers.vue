@@ -53,7 +53,10 @@ useSeoMeta(
         </QAndABox>
 
         <QAndABox question="どんな目標を持って活動していますか？">
-            <p>「社会で戦える技術者になる」という目的の下、大会やコンテストに参加する中で、 個人のスキルやチーム力の向上を目標に活動しています。</p>
+            <p>
+                「社会で戦える技術者になる」という目的の下、大会やコンテストに参加する中で、
+                個人のスキルやチーム力の向上を目標に活動しています。
+            </p>
             <NuxtLink to="/about/sera">詳しくはこちら</NuxtLink>
         </QAndABox>
 
@@ -115,8 +118,12 @@ useSeoMeta(
         </QAndABox>
 
         <QAndABox question="県外での活動などはありますか？">
-            <p>あります。最も遠くて種子島でのコンテストに参加していますが、コロナの影響で令和4年度の県外の活動も少なくなると予想されます。</p>
-            <p>遠征費については、県外での大会にかかる旅費や交通費に対して学校からの補助があります。</p>
+            <p>
+                あります。最も遠くて種子島でのコンテストに参加していますが、コロナの影響で令和4年度の県外の活動も少なくなると予想されます。
+            </p>
+            <p>
+                遠征費については、県外での大会にかかる旅費や交通費に対して学校からの補助があります。
+            </p>
         </QAndABox>
 
         <QAndABox question="何人で活動していますか？">
@@ -132,7 +139,9 @@ useSeoMeta(
             </p>
         </QAndABox>
 
-        <QAndABox question="環境都市工学科や建築学科など、宇宙に全く関係ない学科出身の部員はいますか？">
+        <QAndABox
+            question="環境都市工学科や建築学科など、宇宙に全く関係ない学科出身の部員はいますか？"
+        >
             <p>環境都市工学科、建築学科の学生も実際に活動しています。</p>
             <p>
                 また現在、大手ゼネコンなどでは宇宙ホテル、月面太陽光発電、宇宙エレベーターの開発プロジェクトが検討されているので、
@@ -146,12 +155,14 @@ useSeoMeta(
 
         <QAndABox question="部員の学科の割合は？">
             <p>
-                {{ memberDepartmentRatioDate }}現在、
-                M科{{ SiteInfo.memberDepartmentRatio.mechanicalEng }}人、
-                D科{{ SiteInfo.memberDepartmentRatio.elecControl }}人、
-                E科{{ SiteInfo.memberDepartmentRatio.elecAndComp }}人、
-                C科{{ SiteInfo.memberDepartmentRatio.civilEng }}人、
-                A科{{ SiteInfo.memberDepartmentRatio.architecture }}人です。
+                {{ memberDepartmentRatioDate }}現在、 M科{{
+                    SiteInfo.memberDepartmentRatio.mechanicalEng
+                }}人、 D科{{ SiteInfo.memberDepartmentRatio.elecControl }}人、
+                E科{{ SiteInfo.memberDepartmentRatio.elecAndComp }}人、 C科{{
+                    SiteInfo.memberDepartmentRatio.civilEng
+                }}人、 A科{{
+                    SiteInfo.memberDepartmentRatio.architecture
+                }}人です。
             </p>
         </QAndABox>
 
@@ -160,25 +171,40 @@ useSeoMeta(
             <p>必要な知識は、入部してから先輩方に教えてもらえます。</p>
         </QAndABox>
 
-        <QAndABox question="他の部活との兼部は可能ですか？実際に兼部している人はいますか？">
-            <p>兼部は可能です。 実際に、バドミントン部、バレー部などの運動部や、その他文化部との兼部をしている人がいます。 </p>
+        <QAndABox
+            question="他の部活との兼部は可能ですか？実際に兼部している人はいますか？"
+        >
+            <p>
+                兼部は可能です。
+                実際に、バドミントン部、バレー部などの運動部や、その他文化部との兼部をしている人がいます。
+            </p>
         </QAndABox>
 
         <QAndABox question="顧問の先生はどのような先生ですか？">
             <p>
-                {{ SiteInfo.advisor.department }}に所属されている{{ SiteInfo.advisor.name }}教員です。{{ SiteInfo.advisor.description }}
+                {{ SiteInfo.advisor.department }}に所属されている{{
+                    SiteInfo.advisor.name
+                }}教員です。{{ SiteInfo.advisor.description }}
             </p>
         </QAndABox>
 
         <QAndABox question="用意しておく必要のある道具などはありますか？">
-            <p>個人で使用できるパソコンを用意しておくと、スムーズに活動に参加できます。</p>
-            <p>持っていないからと言って活動できないわけではありません。部で所有するパソコンを使用して活動を行うことも出来ます。</p>
+            <p>
+                個人で使用できるパソコンを用意しておくと、スムーズに活動に参加できます。
+            </p>
+            <p>
+                持っていないからと言って活動できないわけではありません。部で所有するパソコンを使用して活動を行うことも出来ます。
+            </p>
         </QAndABox>
 
         <QAndABox question="部費などのかかる費用について教えてください。">
             <p>¥10,000/年となります。年度初めに徴収させて頂きます。</p>
-            <p>年間予算内でも説明させて頂きますが、集金した部費は、制作材料の購入、機器のメンテナンス、先輩への贈り物などの厚生費に使わせて頂きます。</p>
-            <p>この他に、任意での購入とはなりますが、ユニフォームの購入費(入部後に連絡)がかかります。</p>
+            <p>
+                年間予算内でも説明させて頂きますが、集金した部費は、制作材料の購入、機器のメンテナンス、先輩への贈り物などの厚生費に使わせて頂きます。
+            </p>
+            <p>
+                この他に、任意での購入とはなりますが、ユニフォームの購入費(入部後に連絡)がかかります。
+            </p>
         </QAndABox>
     </main>
 </template>

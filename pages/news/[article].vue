@@ -14,6 +14,11 @@ if (data.value === undefined || data.value === null) {
     });
 }
 
+const pankuzuListPageName = (): string => {
+    const postedDate = new Date(data.value?.date as number);
+    return `${postedDate.getFullYear()}-${postedDate.getMonth() + 1}-${postedDate.getDate()}`;
+};
+
 onMounted(() => {
     const article = document.getElementById("article");
     const articleTitle = article?.getElementsByTagName("h1")[0];
@@ -30,7 +35,7 @@ onMounted(() => {
     ) as string;
     useSeoMeta(
         generateSeoMeta(
-            articleTitle?.innerText,
+            articleTitle?.innerText as string,
             cardContentConversion.innerText,
             data.value?.coverImagePath || "/sera-logo-text.svg",
             "article"
@@ -41,6 +46,7 @@ onMounted(() => {
 
 <template>
     <PageTop text="News" image-path="/images/news-top.jpg" />
+    <PankuzuList :current-page-name="pankuzuListPageName()" />
     <main>
         <img :src="(data?.coverImagePath as string) || '/sera-logo-text.svg'" />
         <div

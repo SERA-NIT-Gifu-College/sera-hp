@@ -1,8 +1,29 @@
 <script setup lang="ts">
 import { marked } from "marked";
-import type { EntryType } from "#imports";
+import type { EntryType, SlideEntry } from "#imports";
 
 const { data } = await useFetch("/api/getNewsList");
+
+const slideEntries: Array<SlideEntry> = [
+    {
+        imagePath: "/images/rocket_top.jpg",
+        title: "Rocket開発チーム",
+        content: "",
+        link: "/projects/rocket",
+    },
+    {
+        imagePath: "/images/cansat_top.jpg",
+        title: "CanSat開発チーム",
+        content: "",
+        link: "/projects/cansat",
+    },
+    {
+        imagePath: "/images/kosen1_gunma-cgv5-a.JPG",
+        title: "KOSEN-X",
+        content: "高専連携による超小型衛星開発",
+        link: "/projects/kosen-x",
+    },
+];
 
 onMounted(() => {
     const twitterScript = document.createElement("script");
@@ -24,6 +45,13 @@ useSeoMeta(
 
 <template>
     <main>
+        <Slide
+            :entries="slideEntries"
+            :duration="5000"
+            width="100vw"
+            height="35rem"
+            id="slide"
+        />
         <div id="news-board">
             <h3>News</h3>
             <div></div>
@@ -39,7 +67,10 @@ useSeoMeta(
                                 })
                             }}
                         </small>
-                        <div class="new-label" v-if="data?.indexOf(entry) < 2">
+                        <div
+                            class="new-label"
+                            v-if="(data?.indexOf(entry) as number) < 2"
+                        >
                             NEW!
                         </div>
                     </div>
@@ -64,7 +95,7 @@ useSeoMeta(
                 data-align="center"
                 data-theme="dark"
                 :data-height="16 * 40"
-                :data-width="16 * 33"
+                :data-width="16 * 24"
                 href="https://twitter.com/SERA_NITGC?ref_src=twsrc%5Etfw"
             >
                 Tweets by SERA_NITGC
@@ -76,7 +107,19 @@ useSeoMeta(
 <style scoped>
 main {
     display: grid;
-    grid: auto-flow / 2fr 1fr;
+    grid: auto auto / 3fr 2fr;
+    grid-template-areas:
+        "slide slide"
+        "news twitter";
+    margin: 0;
+}
+
+main > *:not(#slide) {
+    margin: var(--main-margin-top-bottom) var(--main-margin-left-right);
+}
+
+#slide {
+    grid-area: slide;
 }
 
 #news-board {
@@ -88,6 +131,7 @@ main {
     border: var(--neptune1) solid 3px;
     box-shadow: 10px 5px 5px var(--starlight1);
     display: grid;
+    grid-area: news;
     grid-template-columns: auto;
     grid-template-rows: repeat(2, auto);
     & > h3 {
@@ -147,6 +191,7 @@ main {
     display: flex;
     place-self: center;
     width: fit-content;
+    grid-area: twitter;
     & > .twitter-timeline-rendered {
         display: unset !important;
         width: unset !important;
@@ -161,7 +206,11 @@ main {
         margin: 0;
         place-self: center;
         place-content: center;
-        grid: auto-flow / 75vw;
+        grid: auto auto auto / 75vw;
+        grid-template-areas:
+            "slide"
+            "news"
+            "tweet";
     }
 
     #news-board {

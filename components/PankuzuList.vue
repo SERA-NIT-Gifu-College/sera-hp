@@ -88,9 +88,9 @@ ul li:not(:first-of-type) p:first-of-type {
     }
     &::before {
         position: absolute;
-        content: "ー";
+        content: ">";
         top: 0;
-        left: -1.25rem;
+        left: -1rem;
         width: 1rem;
         height: 100%;
     }

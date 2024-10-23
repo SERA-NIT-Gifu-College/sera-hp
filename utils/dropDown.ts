@@ -28,6 +28,12 @@ export const enum DropDownAlignment {
  * @typedef {object} DropDownEntry
  * @property {string} text Text to be displayed on the menu
  * @property {string} link Hyperlink to the page
+ * @example
+ * const menuEntries: Array<DropDownEntry> = [
+ *     { text: "Home", link: "/" },
+ *     { text: "About", link: "/about" },
+ *     { text: "Blog", link: "/blog" },
+ * ];
  */
 interface DropDownEntry {
     text: string;
@@ -41,6 +47,8 @@ interface DropDownEntry {
  * @property {(DropDownMode | string)} mode Interaction mode of the component
  * @property {Array<DropDownEntry>} entries Entries of DropDown menu
  * @property {(DropDownAlignment | number)=} alignment Explicitly assign the alignment of the component
+ * @example
+ * <DropDown label="Menu" :mode="DropDownMode.onClick" :alignment="DropDownAlignment.Left" :entries="menuEntries" />
  */
 interface DropDownProperty {
     label: string;

@@ -33,7 +33,7 @@ const hamburgerMenuEntries: Array<DropDownEntry> = [
     { text: "写真集", link: "/about/gallery" },
     {
         text: "中学生・新入生向け",
-        link: "/about/for-middle-schoolers-and-new-comers"
+        link: "/about/for-middle-schoolers-and-new-comers",
     },
 ];
 </script>

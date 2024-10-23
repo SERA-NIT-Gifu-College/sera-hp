@@ -29,7 +29,7 @@ const property = defineProps<QAndABoxProperty>();
 }
 
 .q-and-a > h2::before {
-    content: 'Q.';
+    content: "Q.";
     position: absolute;
     display: flex;
     top: -1.5rem;

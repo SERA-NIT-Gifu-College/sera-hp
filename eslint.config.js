@@ -103,6 +103,7 @@ export default [
         languageOptions: {
             parser: vueParser,
             parserOptions: {
+                ecmaVersion: "latest",
                 parser: {
                     js: javaScriptParser,
                     ts: typeScriptEslintParser
@@ -115,7 +116,7 @@ export default [
         }
     },
     {
-        files: ["composables/*.ts", "utils/*.ts", "server/**/*.ts"],
+        files: ["composables/*.ts", "utils/*.ts", "server/**/*.ts", "composables/*.tsx", "utils/*.tsx"],
         plugins: {
             '@typescript-eslint': typeScriptEslintPlugin,
             'prettier': prettierPlugin
@@ -123,8 +124,7 @@ export default [
         languageOptions: {
             parser: typeScriptEslintParser,
             parserOptions: {
-                ecmaVersion: 'latest',
-                sourceType: 'module',
+                ecmaVersion: 2023,
                 project: true
             }
         },

@@ -11,6 +11,8 @@ const imagePathViewer = ref<string>("");
 const captionViewer = ref<string>("");
 const indexViewer = ref<number>(0);
 
+const scrollDistance = useScrollDistance();
+
 const openViewer = (entry: GalleryEntry) => {
     showViewer.value = true;
     imagePathViewer.value = entry.imagePath;
@@ -88,15 +90,16 @@ useSeoMeta(
 
 <style scoped>
 main {
-    justify-self: center;
+    width: calc(100vw - (2 * var(--main-margin-left-right)));
 }
 
 .image-list {
-    width: fit-content;
+    width: 80%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, 20rem);
     grid-template-rows: auto;
     gap: 20px;
+    justify-items: center;
 }
 
 .image-thumbnail {
@@ -131,7 +134,7 @@ main {
 
 .image-viewer {
     position: absolute;
-    top: 0;
+    top: v-bind(scrollDistance + "px");
     left: 0;
     z-index: 10;
     display: grid;
@@ -147,7 +150,7 @@ main {
 }
 
 .image-viewer img {
-    width: max-content;
+    width: min(60vw, auto);
     height: auto;
     max-height: 80vh;
     grid-area: image;
@@ -209,6 +212,12 @@ main {
 .image-viewer-transition-enter-from,
 .image-viewer-transition-leave-to {
     opacity: 0;
+}
+
+@media screen and (max-width: 640px) {
+    main {
+        margin-inline: 1rem;
+    }
 }
 </style>
 

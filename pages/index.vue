@@ -1,10 +1,42 @@
 <script setup lang="ts">
 import { marked } from "marked";
-import type { EntryType, SlideEntry } from "#imports";
+import { EntryType } from "#imports";
+import type { SlideEntry } from "#imports";
 
 const { data } = await useFetch("/api/getNewsList");
 
-const slideEntries: Array<SlideEntry> = [
+const getNewsEntriesForSlide = (): Array<SlideEntry> => {
+    let res: Array<SlideEntry> = [];
+    const latestNewsNumber = 2;
+    for (let i = 0; i < latestNewsNumber; i++) {
+        const news = data.value?.at(i) as NewsEntry;
+        if (news === undefined) break;
+        res[i] = {
+            imagePath:
+                news.coverImagePath === ""
+                    ? "/images/slide-default.jpg"
+                    : (news.coverImagePath as string),
+            title: "News!",
+            content: news.cardContent as string,
+            link:
+                news.entryType === EntryType.Tweet
+                    ? undefined
+                    : (news.linkPath as string),
+        };
+    }
+    return res;
+};
+
+const welcomeSlide: Array<SlideEntry> = [
+    {
+        imagePath: "/images/welcome.jpg",
+        title: "ようこそ！",
+        content: "岐阜高専宇宙工学研究会【SERA】のホームページです。",
+        link: undefined,
+    },
+];
+
+const slidesForProjects: Array<SlideEntry> = [
     {
         imagePath: "/images/rocket_top.jpg",
         title: "Rocket開発チーム",
@@ -24,6 +56,10 @@ const slideEntries: Array<SlideEntry> = [
         link: "/projects/kosen-x",
     },
 ];
+
+let slideEntries = ref<Array<SlideEntry>>(
+    welcomeSlide.concat(getNewsEntriesForSlide(), slidesForProjects)
+);
 
 onMounted(() => {
     const twitterScript = document.createElement("script");
@@ -47,9 +83,9 @@ useSeoMeta(
     <main>
         <Slide
             :entries="slideEntries"
-            :duration="5000"
+            :duration="6000"
             width="100vw"
-            height="35rem"
+            height="calc(100svh - 104px)"
             id="slide"
         />
         <div id="news-board">
@@ -112,6 +148,7 @@ main {
         "slide slide"
         "news twitter";
     margin: 0;
+    width: 100vw;
 }
 
 main > *:not(#slide) {
@@ -125,7 +162,7 @@ main > *:not(#slide) {
 #news-board {
     max-width: 60rem;
     max-height: 50rem;
-    width: fit-content;
+    width: minmax(auto, 60vw);
     place-self: center;
     overflow-y: scroll;
     border: var(--neptune1) solid 3px;
@@ -190,7 +227,8 @@ main > *:not(#slide) {
 #twitter {
     display: flex;
     place-self: center;
-    width: fit-content;
+    max-width: 100%;
+    overflow-x: hidden;
     grid-area: twitter;
     & > .twitter-timeline-rendered {
         display: unset !important;
@@ -202,20 +240,23 @@ main > *:not(#slide) {
 
 @media screen and (max-width: 1024px) {
     main {
-        width: calc(100vw - 4rem);
-        margin: 0;
         place-self: center;
         place-content: center;
-        grid: auto auto auto / 75vw;
+        grid-template-rows: repeat(3, auto);
+        grid-template-columns: 1fr;
         grid-template-areas:
             "slide"
             "news"
             "tweet";
     }
 
+    #slide {
+        margin: auto;
+    }
+
     #news-board {
         margin: 1rem 0;
-        width: 90%;
+        width: calc(90vw - 4rem);
     }
 
     #news-list {
@@ -239,10 +280,14 @@ main > *:not(#slide) {
 
     #twitter {
         margin: 1rem 0;
-        width: 90%;
+        width: calc(90vw - 4rem);
         justify-self: center;
         justify-content: center;
         position: relative;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 4;
         & > .twitter-timeline-rendered iframe {
             position: absolute;
             inset: 50% auto auto 50%;

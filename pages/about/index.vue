@@ -9,7 +9,7 @@ useSeoMeta(
 </script>
 
 <template>
-    <PageTop text="About Us" image-path="/images/page-top.jpg" />
+    <PageTop text="クラブ情報" image-path="/images/page-top.jpg" />
     <PankuzuList />
     <main>
         <ul>

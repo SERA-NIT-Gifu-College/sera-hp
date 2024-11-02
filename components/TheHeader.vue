@@ -65,7 +65,10 @@ const hamburgerMenuEntries: Array<DropDownEntry> = [
                 />
                 <HamburgerMenu
                     :entries="hamburgerMenuEntries"
-                    v-if="viewPortType === ViewPortType.MOBILE"
+                    v-if="
+                        viewPortType === ViewPortType.MOBILE ||
+                        viewPortType === ViewPortType.MEDIUM_TABLET
+                    "
                 />
             </div>
         </div>
@@ -132,7 +135,7 @@ header {
     background: transparent !important;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 960px) {
     .navigation-menu {
         padding-inline: 1rem;
         width: calc(100% - 2rem);

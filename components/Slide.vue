@@ -227,14 +227,14 @@ ul {
 
 .content {
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%) translateY(-1.5vw);
     display: flex;
     flex-direction: column;
     & > h1 {
         margin: auto 0;
-        font-size: 3vw;
+        font-size: clamp(3rem, 3vw, 5rem);
         text-align: center;
         color: var(--starlight);
     }
@@ -242,8 +242,9 @@ ul {
         height: 3rem;
         justify-self: center;
         color: var(--starlight);
-        font-size: 14pt;
+        font-size: clamp(14pt, 1.5vw, 24pt);
         font-weight: 600;
+        text-align: center;
     }
     & > a {
         width: fit-content;
@@ -253,7 +254,7 @@ ul {
         color: var(--uranus);
         text-decoration: none;
         font-weight: bold;
-        font-size: 16pt;
+        font-size: clamp(16pt, 1.5vw, 20pt);
         place-self: center;
         transition: all 0.3s ease;
     }
@@ -270,7 +271,7 @@ ul {
 .controler {
     display: flex;
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
     right: 1rem;
     & > button {
         display: flex;
@@ -279,6 +280,7 @@ ul {
         background-color: rgba(100, 100, 100, 0.8);
         width: 4rem;
         height: 4rem;
+        margin-inline: 0.25rem;
     }
     & > button:hover {
         cursor: pointer;
@@ -324,6 +326,15 @@ ul {
         height: calc(var(--preview-size) - var(--stroke-width));
         object-fit: cover;
         border-radius: 4rem;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .controler {
+        flex-direction: column;
+    }
+    .preview {
+        margin: 0.25rem 0;
     }
 }
 </style>

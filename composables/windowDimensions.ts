@@ -3,7 +3,8 @@
  * @module composables/windowDimensions
  */
 
-const tabletMaxWidth = 1024;
+const largeTabletMaxWidth = 1024;
+const mediumTabletMaxWidth = 960;
 const mobileMaxWidth = 640;
 
 /**
@@ -13,7 +14,8 @@ const mobileMaxWidth = 640;
  */
 const enum ViewPortType {
     DESKTOP,
-    TABLET,
+    LARGE_TABLET,
+    MEDIUM_TABLET,
     MOBILE,
 }
 
@@ -29,12 +31,14 @@ function useWindowDimensions() {
     function update(event: Event | undefined) {
         width.value = window.innerWidth;
         height.value = window.innerHeight;
-        if (width.value >= tabletMaxWidth) {
+        if (width.value > largeTabletMaxWidth) {
             viewPortType.value = ViewPortType.DESKTOP;
-        } else if (width.value < mobileMaxWidth) {
-            viewPortType.value = ViewPortType.MOBILE;
+        } else if (width.value > mediumTabletMaxWidth) {
+            viewPortType.value = ViewPortType.LARGE_TABLET;
+        } else if (width.value > mobileMaxWidth) {
+            viewPortType.value = ViewPortType.MEDIUM_TABLET;
         } else {
-            viewPortType.value = ViewPortType.TABLET;
+            viewPortType.value = ViewPortType.MOBILE;
         }
     }
 

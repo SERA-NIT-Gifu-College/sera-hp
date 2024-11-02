@@ -44,8 +44,7 @@ ul {
     display: inline-flex;
     align-items: center;
     width: var(--list-width);
-    padding: 0;
-    transform: translateX(50vw) translateX(calc(-1 * var(--list-width)));
+    padding: 0 0 0 max(3rem, calc(50vw - var(--list-width)));
 }
 
 ul li {

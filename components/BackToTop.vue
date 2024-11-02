@@ -49,7 +49,7 @@ const triggerDistance = 100;
 
 @media screen and (max-width: 640px) {
     .back-to-top {
-        scale: 75%;
+        scale: 90%;
         bottom: 1rem;
         right: 1rem;
     }

@@ -19,12 +19,9 @@ galleryImageAPI.get('/list', async (request, response) => {
             for (const entry of rows) {
                 ret = ret + "<tr>\n";
                 for (const data in entry) {
-                    ret = ret + `<td>${entry[data]}</td>\n`;
+                    ret = ret + `\t<td>${entry[data]}</td>\n`;
                 }
-                ret = ret + `<td>\n
-                                <button class='delete-button' hx-delete='/api/gallery-image?target=${entry["id"]}'>Delete</button>\n
-                                <a href='/update-gallery-image.html?target=${entry["id"]}'><button class='edit-button' hx-confirm='unset'>Edit</button></a>\n
-                            </td>\n</tr>\n`;
+                ret = ret + `\t<td>\n\t\t<button class='delete-button' hx-delete='/api/gallery-image?target=${entry["id"]}'>Delete</button>\n\t\t<a href='/update-gallery-image.html?target=${entry["id"]}'><button class='edit-button' hx-confirm='unset'>Edit</button></a>\n\t</td>\n</tr>\n`;
             }
             return ret;
         });
@@ -34,6 +31,23 @@ galleryImageAPI.get('/list', async (request, response) => {
     } catch (err) {
         console.error(err);
         database.close();
+        response.status(500).send(err);
+    }
+});
+
+galleryImageAPI.get('/list-unwrapped', async (request, response) => {
+    const database = new sqlite3.Database(databasePath);
+    const sqlQuery = "SELECT * FROM gallery";
+
+    try {
+        const result = await asyncDatabaseRead(database, sqlQuery, (rows) => { return rows; });
+
+        database.close();
+        response.send(result);
+    } catch (err) {
+        console.error(err);
+        database.close();
+        response.status(500).send(err);
     }
 });
 
@@ -56,6 +70,7 @@ galleryImageAPI.get('/', async (request, response) => {
     } catch (err) {
         console.error(err);
         database.close();
+        response.status(500).send(err);
     }
 });
 
@@ -72,6 +87,7 @@ galleryImageAPI.post('/', async (request, response) => {
             console.log("Image added successfully.");
         });
     } catch (err) {
+        console.error(err);
         response.status(500).send(err);
     }
 
@@ -99,6 +115,7 @@ galleryImageAPI.put('/', async (request, response) => {
             console.log("Image updated successfully.");
         });
     } catch (err) {
+        console.error(err);
         response.status(500).send(err);
     }
 
@@ -123,6 +140,7 @@ galleryImageAPI.delete('/', async (request, response) => {
             console.log("Image deleted successfully.");
         });
     } catch (err) {
+        console.error(err);
         response.status(500).send(err);
     }
 

@@ -41,16 +41,17 @@ npm run dev # JSファイル変更時に自動リロードが入る開発サー�
 ## API(RESTful)
 
 * `/api/news`
-    * GET: Unix時間で特定されたニュースの情報を取得する - `?target=<Unix時間>`
+    * GET(`/`): Unix時間で特定されたニュースの情報を取得する - `?target=<Unix時間>`
+    * GET(`/list`): HTML/HTMX形式で全ニュースの情報を取得する
+    * GET(`/list-unwrapped`): JSON形式で全ニュースの情報を取得する
     * POST: 新しいニュースを作成する
     * PUT: ニュースの内容を更新する
     * DELETE: Unix時間で特定されたニュースを削除する - `?target=<Unix時間>`
-* `/api/news-list`
-    * GET: 全ニュースの情報を取得する
 
 * `/api/gallery-image`
     * GET(`/`): IDで指定された画像へのパスと説明文を取得する - `?target=<ID>`
-    * GET(`/list`): 全画像の情報を取得する
+    * GET(`/list`): HTML/HTMX形式で全画像の情報を取得する
+    * GET(`/list-unwrapped`): JSON形式で全画像の情報を取得する
     * POST: 新しい画像の情報を追加する
     * PUT: 画像の情報を更新する
     * DELETE: IDで指定された画像の情報を削除する - `?target=<ID>`

@@ -1,6 +1,6 @@
 /**
  * Type for PankuzuList component
- * @module utils/pankuzuList
+ * @module utils/types/pankuzuList
  */
 
 /**

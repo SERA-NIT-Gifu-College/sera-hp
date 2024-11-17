@@ -1,6 +1,6 @@
 /**
  * Type for QAndABox component
- * @module utils/qAndABox
+ * @module utils/types/qAndABox
  */
 
 /**

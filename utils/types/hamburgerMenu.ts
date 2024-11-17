@@ -1,6 +1,6 @@
 /**
  * Type for HamburgerMenu component
- * @module utils/hamburgerMenu
+ * @module utils/types/hamburgerMenu
  */
 
 import type { DropDownEntry } from "./dropDown";

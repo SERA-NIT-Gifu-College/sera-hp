@@ -1,6 +1,6 @@
 /**
  * Type for gallery image entry data
- * @module utils/galleryEntry
+ * @module utils/types/galleryEntry
  */
 
 /**

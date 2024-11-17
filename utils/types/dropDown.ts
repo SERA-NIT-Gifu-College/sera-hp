@@ -1,6 +1,6 @@
 /**
  * Types for DropDown component
- * @module utils/dropDown
+ * @module utils/types/dropDown
  */
 
 /**

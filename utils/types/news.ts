@@ -1,6 +1,6 @@
 /**
  * Types for news data
- * @module utils/news
+ * @module utils/types/news
  */
 
 /**

@@ -1,6 +1,6 @@
 /**
  * Type for NewsCard component
- * @module utils/newsCard
+ * @module utils/types/newsCard
  */
 
 import type { NewsEntry } from "./news";

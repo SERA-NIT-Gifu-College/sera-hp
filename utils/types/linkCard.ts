@@ -1,6 +1,6 @@
 /**
  * Type for LinkCard component
- * @module utils/linkCard
+ * @module utils/types/linkCard
  */
 
 /**

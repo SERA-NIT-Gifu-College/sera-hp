@@ -23,7 +23,6 @@ import type { UseSeoMetaInput } from "@unhead/schema";
  * );
  * @example
  * useSeoMeta(generateSeoMeta(data.articleName, data.articleDescription, data.articleCoverImage, "article"));
- * @function
  */
 export function generateSeoMeta(
     title: string,

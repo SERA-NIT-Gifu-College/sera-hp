@@ -1,5 +1,5 @@
 /**
- * Types for QAndABox component
+ * Type for QAndABox component
  * @module utils/qAndABox
  */
 

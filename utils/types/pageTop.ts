@@ -1,5 +1,5 @@
 /**
- * Types for PageTop component
+ * Type for PageTop component
  * @module utils/pageTop
  */
 

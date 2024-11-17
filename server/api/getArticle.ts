@@ -14,10 +14,8 @@ const __dirname = path.dirname(__filename);
 
 /**
  * Handler of getArticle event. Entry is selected by linkPath
- * @name getArticleEventHandler
  * @param {H3Event<EventHandlerRequest>} event
  * @returns {ArticleInfo} - object that contains information and content of article
- * @function
  */
 const getArticleEventHandler = defineEventHandler(async (event: any) => {
     const database = new sqlite3.Database(

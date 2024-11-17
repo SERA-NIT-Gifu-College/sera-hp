@@ -13,10 +13,8 @@ const __dirname = path.dirname(__filename);
 
 /**
  * Handler of getImages event
- * @name getImagesEventHandler
  * @param {H3Event<EventHandlerRequest>} event
  * @returns {Array<GalleryEntry>} list of image entry
- * @function
  */
 const getGalleryImagesEventHandler = defineEventHandler(async (event: any) => {
     const database = new sqlite3.Database(

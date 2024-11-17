@@ -14,10 +14,8 @@ const __dirname = path.dirname(__filename);
 
 /**
  * Handler of getArticleList event
- * @name getArticleListEventHandler
  * @param {H3Event<EventHandlerRequest>} event
  * @returns {Array<NewsEntry>} list of news
- * @function
  */
 const getArticleListEventHandler = defineEventHandler(async (event: any) => {
     const database = new sqlite3.Database(

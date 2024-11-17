@@ -3,7 +3,7 @@
  * @module utils/hamburgerMenu
  */
 
-import type { DropDownEntry } from "#imports";
+import type { DropDownEntry } from "./dropDown";
 
 /**
  * Interface for HamburgerMenu component properties

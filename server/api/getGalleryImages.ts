@@ -5,7 +5,7 @@
 import sqlite3 from "sqlite3";
 import path from "path";
 import { fileURLToPath } from "url";
-import type { GalleryEntry } from "~/utils/galleryEntry";
+import type { GalleryEntry } from "~/utils/types/galleryEntry";
 import { asyncDatabaseRead } from "~/utils/asyncDatabase";
 
 const __filename = fileURLToPath(import.meta.url);

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PageTopProperty } from "~/utils/pageTop";
+import type { PageTopProperty } from "~/utils/types/pageTop";
 
 const property = defineProps<PageTopProperty>();
 </script>

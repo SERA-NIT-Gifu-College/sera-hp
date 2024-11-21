@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { DropDownAlignment, type DropDownProperty } from "#imports";
+import {
+    DropDownAlignment,
+    type DropDownProperty,
+} from "~/utils/types/dropDown";
 
 const property = defineProps<DropDownProperty>();
 

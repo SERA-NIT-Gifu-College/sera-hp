@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NewsCardProperty } from "~/utils/newsCard";
+import type { NewsCardProperty } from "~/utils/types/newsCard";
 import { marked } from "marked";
 
 const property = defineProps<NewsCardProperty>();

@@ -17,6 +17,7 @@
 
 #App {
     display: grid;
+    height: max-content;
 }
 
 body {
@@ -25,10 +26,10 @@ body {
 
 main {
     margin: var(--main-margin-top-bottom) var(--main-margin-left-right);
+    min-height: 64vh;
 }
 
 html {
     font-size: 16px;
-    scrollbar-width: none;
     scroll-behavior: smooth;
 }

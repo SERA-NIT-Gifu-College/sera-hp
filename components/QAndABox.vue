@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { QAndABoxProperty } from "~/utils/qAndABox";
+import type { QAndABoxProperty } from "~/utils/types/qAndABox";
 const property = defineProps<QAndABoxProperty>();
 </script>
 

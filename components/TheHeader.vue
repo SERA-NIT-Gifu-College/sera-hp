@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LogoSVG from "public/sera-logo-no-text.svg";
 import SiteInfo from "~/assets/siteinfo.json";
-import type { DropDownEntry } from "~/utils/dropDown";
+import type { DropDownEntry } from "~/utils/types/dropDown";
 
 const { viewPortType } = useWindowDimensions();
 

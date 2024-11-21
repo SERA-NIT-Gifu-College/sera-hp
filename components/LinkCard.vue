@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LinkCardProperty } from "~/utils/linkCard";
+import type { LinkCardProperty } from "~/utils/types/linkCard";
 const property = defineProps<LinkCardProperty>();
 const doesNotHaveImage = ref<boolean>(property.imagePath === undefined);
 </script>
@@ -20,7 +20,7 @@ const doesNotHaveImage = ref<boolean>(property.imagePath === undefined);
 a {
     display: grid;
     width: 25rem;
-    height: 30rem;
+    height: clamp(10rem, 15vh, max(30rem, fit-content));
     grid: 2fr 1fr 1.5fr / 1fr;
     background-color: var(--starlight);
     border-radius: 1rem;
@@ -39,7 +39,6 @@ a > * {
 
 .withoutImage {
     grid: 1fr 1.5fr / 1fr;
-    height: 15rem;
 }
 
 .image {
@@ -58,10 +57,11 @@ h2 {
     color: var(--neptune1);
     background-color: var(--starlight5);
     border-radius: 1rem;
-    margin: 0 2rem;
+    margin: 0.75rem 2rem;
     padding: 1rem 1.75rem;
     align-self: center;
     line-height: 2rem;
+    font-size: clamp(16pt, 3vw, 20pt);
 }
 
 h2::after {
@@ -69,9 +69,10 @@ h2::after {
     content: "";
     position: absolute;
     width: 7px;
-    height: 2rem;
-    top: 1rem;
+    height: max(2rem, 60%);
+    top: 50%;
     left: 0.75rem;
+    transform: translateY(-50%);
     background-color: var(--neptune1);
     border-radius: 3px;
 }
@@ -84,13 +85,9 @@ p {
 @media screen and (max-width: 1024px) {
     a {
         width: 20rem;
-        height: 25rem;
     }
     a > * {
-        margin: 0 1rem;
-    }
-    h2 {
-        font-size: 16pt;
+        margin: unset 0.25rem;
     }
     .image {
         width: 16rem;
@@ -101,13 +98,9 @@ p {
 @media screen and (max-width: 640px) {
     a {
         width: 16rem;
-        height: 21rem;
     }
     a > * {
-        margin: 0 0.75rem;
-    }
-    h2 {
-        font-size: 16pt;
+        margin: unset 0.75rem;
     }
     .image {
         width: 12rem;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PankuzuEntries from "~/assets/pankuzuEntries.json";
-import type { PankuzuListProperty } from "~/utils/pankuzuList";
+import type { PankuzuListProperty } from "~/utils/types/pankuzuList";
 
 const property = defineProps<PankuzuListProperty>();
 const route = useRoute();
@@ -36,6 +36,7 @@ nav {
     height: 5rem;
     display: flex;
     align-content: center;
+    container: pankuzu / inline-size;
 }
 
 ul {
@@ -43,8 +44,8 @@ ul {
     list-style-type: none;
     display: inline-flex;
     align-items: center;
-    width: var(--list-width);
-    padding: 0 0 0 max(3rem, calc(50vw - var(--list-width)));
+    width: fit-content;
+    padding: 0 0 0 max(2rem, calc(50vw - var(--list-width)));
 }
 
 ul li {
@@ -92,6 +93,12 @@ ul li:not(:first-of-type) p:first-of-type {
         left: -1rem;
         width: 1rem;
         height: 100%;
+    }
+}
+
+@container pankuzu (width < 640px) {
+    ul li {
+        font-size: smaller;
     }
 }
 </style>

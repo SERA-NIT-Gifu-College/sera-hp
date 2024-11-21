@@ -11,8 +11,6 @@ const imagePathViewer = ref<string>("");
 const captionViewer = ref<string>("");
 const indexViewer = ref<number>(0);
 
-const scrollDistance = useScrollDistance();
-
 const openViewer = (entry: GalleryEntry) => {
     showViewer.value = true;
     imagePathViewer.value = entry.imagePath;
@@ -95,6 +93,7 @@ main {
 
 .image-list {
     width: 80%;
+    min-width: 20rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, 20rem);
     grid-template-rows: auto;
@@ -133,8 +132,8 @@ main {
 }
 
 .image-viewer {
-    position: absolute;
-    top: v-bind(scrollDistance + "px");
+    position: fixed;
+    top: 0;
     left: 0;
     z-index: 10;
     display: grid;
@@ -150,12 +149,12 @@ main {
 }
 
 .image-viewer img {
-    width: min(60vw, auto);
-    height: auto;
-    max-height: 80vh;
+    width: clamp(10rem, 50%, 50rem);
+    height: clamp(10rem, 60vh, 50rem);
     grid-area: image;
     justify-self: center;
     align-self: center;
+    object-fit: contain;
 }
 
 .image-viewer p {
@@ -217,6 +216,7 @@ main {
 @media screen and (max-width: 640px) {
     main {
         margin-inline: 1rem;
+        width: calc(100vw - (2 * 1rem));
     }
 }
 </style>

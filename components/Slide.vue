@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import type { SlideProperty, SlideEntry } from "~/utils/slide.ts";
+import type { SlideProperty, SlideEntry } from "~/utils/types/slide.ts";
 
 const property = defineProps<SlideProperty>();
+const { viewPortOrientation } = useWindowDimensions();
+
+const UnitREM = 16;
+const fourREM = 4 * UnitREM;
+const halfREM = 0.5 * UnitREM;
 
 const width = property.width;
 const height = property.height;
+const controlerWidth = (property.entries.length + 1) * (fourREM + halfREM);
+const controlerWidthCSSValue = controlerWidth.toString() + "px";
 let timer: NodeJS.Timeout;
 
 const controlIcons = ["ic:baseline-pause", "ic:baseline-play-arrow"];
@@ -28,9 +35,18 @@ const previewAnimationTiming: KeyframeEffectOptions = {
 };
 
 const slideAnimationTimingMargin = 100;
+const slideAnimationFirstStageOffset = 0.2;
+const slideAnimationSecondStageOffset = 0.5;
+const slideAnimationThirdStageOffset = 0.8;
 const slideAnimation = {
     opacity: [0, 1, 1, 1, 0],
-    offset: [0, 0.2, 0.5, 0.8, 1],
+    offset: [
+        0,
+        slideAnimationFirstStageOffset,
+        slideAnimationSecondStageOffset,
+        slideAnimationThirdStageOffset,
+        1.0,
+    ],
     easing: ["ease-in", "ease-out"],
 };
 
@@ -198,6 +214,8 @@ onUnmounted(() => {
     position: relative;
     width: v-bind(width);
     height: v-bind(height);
+    container-name: slide;
+    container-type: size;
 }
 
 .slides {
@@ -227,14 +245,15 @@ ul {
 
 .content {
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 50%;
     transform: translateX(-50%) translateY(-1.5vw);
     display: flex;
     flex-direction: column;
+    width: max(80%, 16rem);
     & > h1 {
         margin: auto 0;
-        font-size: clamp(3rem, 3vw, 5rem);
+        font-size: clamp(3rem, 3cqw, 52pt);
         text-align: center;
         color: var(--starlight);
     }
@@ -242,7 +261,7 @@ ul {
         height: 3rem;
         justify-self: center;
         color: var(--starlight);
-        font-size: clamp(14pt, 1.5vw, 24pt);
+        font-size: clamp(14pt, 1.5cqw, 24pt);
         font-weight: 600;
         text-align: center;
     }
@@ -250,11 +269,12 @@ ul {
         width: fit-content;
         border: var(--starlight) 3px solid;
         background-color: transparent;
-        padding: 0.5rem 2rem;
+        margin-top: 5cqh;
+        padding: 0.5rem 1.5rem;
         color: var(--uranus);
         text-decoration: none;
         font-weight: bold;
-        font-size: clamp(16pt, 1.5vw, 20pt);
+        font-size: clamp(16pt, 2cqw, 20pt);
         place-self: center;
         transition: all 0.3s ease;
     }
@@ -273,6 +293,9 @@ ul {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    width: v-bind(controlerWidthCSSValue);
+    height: 4rem;
+    align-items: center;
     & > button {
         display: flex;
         border: none;
@@ -280,7 +303,8 @@ ul {
         background-color: rgba(100, 100, 100, 0.8);
         width: 4rem;
         height: 4rem;
-        margin-inline: 0.25rem;
+        margin-inline: 0.0625rem;
+        scale: 90%;
     }
     & > button:hover {
         cursor: pointer;
@@ -300,7 +324,8 @@ ul {
     position: relative;
     width: var(--calculated-size);
     height: var(--calculated-size);
-    margin-inline: 0.25rem;
+    margin-inline: 0.0625rem;
+    scale: 90%;
     &:hover {
         cursor: pointer;
     }
@@ -329,12 +354,29 @@ ul {
     }
 }
 
-@media screen and (max-width: 960px) {
+@container slide (width < 640px) {
+    .content {
+        width: 16rem;
+        transform: translateX(-55%);
+    }
+}
+
+@container slide (width < 960px) {
     .controler {
         flex-direction: column;
+        scale: 80%;
+        bottom: -2rem;
+        right: 0rem;
+        width: 4rem;
+        height: v-bind(controlerWidthCSSValue);
     }
     .preview {
-        margin: 0.25rem 0;
+        margin: calc(1rem / 16) 0;
     }
+}
+
+.portrait-controler {
+    flex-direction: column;
+    right: 0rem;
 }
 </style>

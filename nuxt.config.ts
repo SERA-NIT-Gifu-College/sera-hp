@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     '/news/**': { prerender: true },
     '/projects/**': { prerender: true }
   },
+  imports: {
+    dirs: ["utils/types"],
+  },
   devtools: { enabled: true },
   modules: [
     '@nuxt/image',

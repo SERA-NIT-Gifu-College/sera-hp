@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { marked } from "marked";
-import { EntryType } from "#imports";
-import type { SlideEntry } from "#imports";
+import { EntryType, type NewsEntry } from "~/utils/types/news";
+import type { SlideEntry } from "~/utils/types/slide";
 
 const { data } = await useFetch("/api/getNewsList");
 
@@ -57,6 +57,30 @@ const slidesForProjects: Array<SlideEntry> = [
     },
 ];
 
+interface QuickLinkEntry {
+    label: string;
+    imagePath: string;
+    link: string;
+}
+
+const quickLinkEntries: Array<QuickLinkEntry> = [
+    {
+        label: "NEWS",
+        imagePath: "/images/news-top.jpg",
+        link: "/news",
+    },
+    {
+        label: "About",
+        imagePath: "/images/page-top.jpg",
+        link: "/about",
+    },
+    {
+        label: "Projects",
+        imagePath: "/images/kosen1_gunma-cgv5-a.JPG",
+        link: "/projects",
+    },
+];
+
 let slideEntries = ref<Array<SlideEntry>>(
     welcomeSlide.concat(getNewsEntriesForSlide(), slidesForProjects)
 );
@@ -85,9 +109,23 @@ useSeoMeta(
             :entries="slideEntries"
             :duration="6000"
             width="100vw"
-            height="calc(100svh - 104px)"
+            height="max(50svh, 30rem)"
             id="slide"
         />
+        <div id="quick-links-container">
+            <div id="quick-links">
+                <div
+                    class="quick-link-entry"
+                    v-for="entry in quickLinkEntries"
+                    :key="quickLinkEntries.indexOf(entry)"
+                    :style="{ backgroundImage: `url('${entry.imagePath}')` }"
+                >
+                    <NuxtLink :to="entry.link">
+                        <h2>{{ entry.label }}</h2>
+                    </NuxtLink>
+                </div>
+            </div>
+        </div>
         <div id="news-board">
             <h3>News</h3>
             <div></div>
@@ -143,20 +181,86 @@ useSeoMeta(
 <style scoped>
 main {
     display: grid;
-    grid: auto auto / 3fr 2fr;
+    grid: auto auto auto / 3fr 2fr;
     grid-template-areas:
         "slide slide"
+        "quick-links quick-links"
         "news twitter";
     margin: 0;
     width: 100vw;
 }
 
-main > *:not(#slide) {
-    margin: var(--main-margin-top-bottom) var(--main-margin-left-right);
+main > *:not(#slide, #quick-links-container) {
+    margin-inline: var(--main-margin-left-right);
+}
+
+main:last-child {
+    margin-bottom: var(--main-margin-top-bottom);
 }
 
 #slide {
     grid-area: slide;
+}
+
+#quick-links-container {
+    display: block;
+    margin: 0 0 2rem 0;
+    grid-area: quick-links;
+    container: quick-links-container / inline-size;
+    background-color: var(--astronaut);
+}
+
+#quick-links {
+    --quick-link-margin: 1rem;
+    display: grid;
+    width: calc(100vw - 40 * var(--quick-link-margin));
+    height: calc(100vw / 3 * 1 / 3);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    margin: var(--quick-link-margin) calc(20 * var(--quick-link-margin));
+    align-items: center;
+}
+
+.quick-link-entry {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/1;
+    background-position: center;
+    background-size: cover;
+    background-color: #414141cb;
+    background-blend-mode: overlay;
+    transition: all 0.5s ease-in-out;
+    & > a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        color: var(--starlight);
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+    }
+    & > a > h2 {
+        font-size: 3cqi;
+    }
+}
+
+.quick-link-entry:hover {
+    transition: all 0.25s ease-in-out;
+    background-color: transparent;
+}
+
+@container quick-links-container (width < 640px) {
+    #quick-links {
+        width: 100vw;
+        height: 100vw;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        margin-inline: 0;
+    }
+    .quick-link-entry > a > h2 {
+        font-size: 7cqi;
+    }
 }
 
 #news-board {
@@ -230,7 +334,7 @@ main > *:not(#slide) {
     max-width: 100%;
     overflow-x: hidden;
     grid-area: twitter;
-    & > .twitter-timeline-rendered {
+    & > .twitter-timeline {
         display: unset !important;
         width: unset !important;
         max-width: unset !important;
@@ -242,12 +346,16 @@ main > *:not(#slide) {
     main {
         place-self: center;
         place-content: center;
-        grid-template-rows: repeat(3, auto);
+        grid-template-rows: repeat(4, auto);
         grid-template-columns: 1fr;
         grid-template-areas:
             "slide"
+            "quick-links"
             "news"
             "tweet";
+        & > * {
+            margin-inline: 0 !important;
+        }
     }
 
     #slide {
@@ -279,15 +387,15 @@ main > *:not(#slide) {
     }
 
     #twitter {
-        margin: 1rem 0;
         width: calc(90vw - 4rem);
+        height: fit-content;
         justify-self: center;
         justify-content: center;
         position: relative;
         grid-column-start: 1;
         grid-column-end: 2;
-        grid-row-start: 3;
-        grid-row-end: 4;
+        grid-row-start: 4;
+        grid-row-end: 5;
         & > .twitter-timeline-rendered iframe {
             position: absolute;
             inset: 50% auto auto 50%;

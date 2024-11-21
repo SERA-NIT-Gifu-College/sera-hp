@@ -16,6 +16,7 @@ const basicRules = {
         {
             "ignoreArrayIndexes": true,
             "ignoreClassFieldInitialValues": true,
+            "ignoreDefaultValues": true,
             "enforceConst": true,
             "ignore": [0, 1, -1]
         }

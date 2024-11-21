@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HamburgerMenuProperty } from "#imports";
+import type { HamburgerMenuProperty } from "~/utils/types/hamburgerMenu";
 
 const property = defineProps<HamburgerMenuProperty>();
 
@@ -69,7 +69,7 @@ const handleClickEvent = () => {
 }
 
 .hamburger-menu-item-list {
-    --menu-width: 45vw;
+    --menu-width: max(16rem, 45vw);
     display: block;
     background: var(--neptune1);
     color: var(--starlight);
@@ -81,6 +81,7 @@ const handleClickEvent = () => {
     width: var(--menu-width);
     height: 100vh;
     text-wrap: nowrap;
+    overflow-y: scroll;
     & button {
         --button-size: 2.5rem;
         display: flex;

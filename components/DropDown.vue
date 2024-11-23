@@ -59,8 +59,8 @@ const handleFocusOutEvent = () => {
         >
             {{ property.label }}
         </button>
-        <Transition name="dropdown-fade">
-            <div class="dropdown-item-list" v-if="isOpen">
+        <div class="dropdown-item-list-wrapper">
+            <div class="dropdown-item-list" :class="{ 'show-list': isOpen }">
                 <ul>
                     <li
                         v-for="entry in property.entries"
@@ -70,7 +70,7 @@ const handleFocusOutEvent = () => {
                     </li>
                 </ul>
             </div>
-        </Transition>
+        </div>
     </div>
 </template>
 
@@ -86,25 +86,27 @@ const handleFocusOutEvent = () => {
 }
 
 .dropdown-menu {
-    display: inline-block;
-    width: fit-content;
-    position: relative;
+    display: inline-flex;
+    flex-direction: column;
 }
 
 .dropdown-label {
     background: none;
-    width: fit-content;
+    width: 100%;
     padding: 1rem 2rem;
-    border: transparent solid 3px;
+    border-top: currentColor solid 3px;
+    border-inline: transparent solid 3px;
+    border-bottom: transparent solid 3px;
     font-size: 1em;
     font-weight: bold;
     color: var(--neptune1);
+    transition: 0.2s linear;
 }
 
 .dropdown-label:hover {
     cursor: pointer;
     color: var(--andromeda);
-    border-top: currentColor solid 3px;
+    border: currentColor solid 3px;
     transition: 0.2s linear;
 }
 
@@ -123,24 +125,35 @@ const handleFocusOutEvent = () => {
     }
 }
 
+.dropdown-item-list-wrapper {
+    height: 0;
+}
+
 .dropdown-item-list {
     display: block;
     background: var(--neptune1);
     color: var(--starlight);
     font-weight: bold;
-    position: absolute;
-    top: auto;
+    position: relative;
     z-index: 100;
-    min-width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
     width: fit-content;
+    min-width: 9rem;
     text-wrap: nowrap;
+    line-height: 2.125rem;
     & ul {
         list-style: none;
         padding: 0 0.25rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-inline: 0.5rem;
     }
     & ul li {
         margin: 0.5rem 0;
-        transition: 0.2s linear;
     }
     & ul li:first-child {
         margin-top: 0;
@@ -159,5 +172,11 @@ const handleFocusOutEvent = () => {
         text-decoration: currentColor underline dashed;
         text-decoration-thickness: 2px;
     }
+}
+
+.show-list {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.2s ease;
 }
 </style>

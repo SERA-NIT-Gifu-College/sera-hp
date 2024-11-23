@@ -83,6 +83,6 @@ section:last-of-type {
 }
 
 img {
-    width: 60rem;
+    width: clamp(300px, 40vw, 60rem);
 }
 </style>

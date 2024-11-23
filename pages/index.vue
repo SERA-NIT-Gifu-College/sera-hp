@@ -2,6 +2,7 @@
 import { marked } from "marked";
 import { EntryType, type NewsEntry } from "~/utils/types/news";
 import type { SlideEntry } from "~/utils/types/slide";
+import SiteInfo from "~/assets/siteinfo.json";
 
 const { data } = await useFetch("/api/getNewsList");
 
@@ -31,7 +32,7 @@ const welcomeSlide: Array<SlideEntry> = [
     {
         imagePath: "/images/welcome.jpg",
         title: "ようこそ！",
-        content: "岐阜高専宇宙工学研究会【SERA】のホームページです。",
+        content: `岐阜高専宇宙工学研究会【${SiteInfo.clubNameAbbreviation}】のホームページです。`,
         link: undefined,
     },
 ];
@@ -213,19 +214,20 @@ main:last-child {
 #quick-links {
     --quick-link-margin: 1rem;
     display: grid;
-    width: calc(100vw - 40 * var(--quick-link-margin));
-    height: calc(100vw / 3 * 1 / 3);
+    width: calc(100vw - 2 * var(--quick-link-margin));
+    height: calc(100vw / 9);
+    min-height: 10rem;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    margin: var(--quick-link-margin) calc(20 * var(--quick-link-margin));
+    margin: var(--quick-link-margin);
     align-items: center;
 }
 
 .quick-link-entry {
     position: relative;
     width: 100%;
-    height: auto;
-    aspect-ratio: 3/1;
+    height: 100%;
+    min-height: 10rem;
     background-position: center;
     background-size: cover;
     background-color: #414141cb;
@@ -334,6 +336,7 @@ main:last-child {
     max-width: 100%;
     overflow-x: hidden;
     grid-area: twitter;
+    margin-top: 1rem;
     & > .twitter-timeline {
         display: unset !important;
         width: unset !important;

@@ -328,6 +328,7 @@ ul {
     scale: 90%;
     &:hover {
         cursor: pointer;
+        scale: 1.01;
     }
     & svg {
         position: absolute;

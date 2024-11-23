@@ -20,6 +20,15 @@ const mediaDropDownEntries: Array<DropDownEntry> = [
     { text: "Gallery", link: "/about/gallery" },
 ];
 
+const informationDropDownEntries: Array<DropDownEntry> = [
+    { text: `About ${SiteInfo.clubNameAbbreviation}`, link: "/about/sera" },
+    {
+        text: "中学生・新入生向け",
+        link: "/about/for-middle-schoolers-and-new-comers",
+    },
+    { text: "Contact", link: "/contact" },
+];
+
 const hamburgerMenuEntries: Array<DropDownEntry> = [
     { text: "Home", link: "/" },
     { text: "News", link: "/news" },
@@ -35,6 +44,7 @@ const hamburgerMenuEntries: Array<DropDownEntry> = [
         text: "中学生・新入生向け",
         link: "/about/for-middle-schoolers-and-new-comers",
     },
+    { text: "Contact SERA", link: "/contact" },
 ];
 </script>
 
@@ -47,7 +57,7 @@ const hamburgerMenuEntries: Array<DropDownEntry> = [
                     :mode="DropDownMode.onClick"
                     :alignment="DropDownAlignment.Left"
                     :entries="exploreDropDownEntries"
-                    class="left-dropdown"
+                    class="explore-dropdown"
                 />
             </div>
             <div id="logo-link">
@@ -57,11 +67,18 @@ const hamburgerMenuEntries: Array<DropDownEntry> = [
             </div>
             <div id="header-right">
                 <DropDown
+                    label="Info"
+                    :mode="DropDownMode.onClick"
+                    :alignment="DropDownAlignment.Right"
+                    :entries="informationDropDownEntries"
+                    class="info-dropdown"
+                />
+                <DropDown
                     label="Media"
                     :mode="DropDownMode.onClick"
                     :alignment="DropDownAlignment.Right"
                     :entries="mediaDropDownEntries"
-                    class="right-dropdown"
+                    class="media-dropdown"
                 />
                 <HamburgerMenu
                     :entries="hamburgerMenuEntries"
@@ -97,6 +114,9 @@ header {
 #header-left,
 #header-right {
     display: flex;
+    & > * {
+        margin-inline: 0.25rem;
+    }
 }
 
 #header-left {
@@ -140,8 +160,9 @@ header {
         padding-inline: 1rem;
         width: calc(100% - 2rem);
     }
-    .left-dropdown,
-    .right-dropdown {
+    .explore-dropdown,
+    .info-dropdown,
+    .media-dropdown {
         display: none;
     }
 }

@@ -52,6 +52,12 @@ const showThePast = (event: Event) => {
                                 <li>
                                     <NuxtLink to="/news"> News </NuxtLink>
                                 </li>
+                                <li>
+                                    <NuxtLink to="/contact">
+                                        Contact
+                                        {{ SiteInfo.clubNameAbbreviation }}
+                                    </NuxtLink>
+                                </li>
                             </ul>
                         </li>
                         <li>

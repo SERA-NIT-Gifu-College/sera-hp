@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon --watch . --ignore pages"
+    "dev": "nodemon --watch . --ignore pages",
+    "documentation": "jsdoc -c ./jsdoc-conf.json"
   },
   "type": "module",
   "author": "kenryus",

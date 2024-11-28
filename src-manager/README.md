@@ -18,6 +18,7 @@ cd src-manager/ # このディレクトリーに移動
 npm install # 依存パッケージのインストール、まだ一度も実行していない場合
 npm start # サーバーを起動、ブラウザで http://localhost:3001 に入る
 npm run dev # JSファイル変更時に自動リロードが入る開発サーバーを起動する。同じく http://localhost:3001 でホストされる
+npm run documentation # ドキュメンテーションを生成, "./docs/manager/<バージョン>/" 内で `python -m http.server` 等でローカルでホストする
 ```
 
 ## データベース

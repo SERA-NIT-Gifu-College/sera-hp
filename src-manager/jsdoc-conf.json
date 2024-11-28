@@ -1,0 +1,29 @@
+{
+    "plugins": ["plugins/markdown"],
+    "recurseDepth": 5,
+    "sourceType": "module",
+    "source": {
+        "include": ["./utils/", "./api/"],
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "tags": {
+        "allowUnknownTags": false,
+        "dictionaries": ["jsdoc"]
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true,
+        "disableSort": true
+    },
+    "opts": {
+        "encoding": "utf8",
+        "verbose": true,
+        "destination": "./docs/",
+        "readme": "./README.md",
+        "package": "./package.json"
+    },
+    "markdown": {
+        "hardwrap": false,
+        "idInHeadings": true
+    }
+}

@@ -5,9 +5,12 @@
     <title>Content Manager - update news</title>
     <link rel="stylesheet" href="/styles/markdown.css">
     <link rel="stylesheet" href="/styles/color-pallet.css">
-    <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.3" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script type="module">
+        import DOMPurify from "https://cdn.jsdelivr.net/npm/isomorphic-dompurify/+esm"
+    </script>
     <style>
         form fieldset {
             display: grid;
@@ -101,11 +104,13 @@
             .catch((err) => {console.error(err)});
 
         articleEditor.addEventListener('input', () => {
-            markdownPreview.innerHTML = marked.parse(articleEditor.value);
+            const cleanHTML = DOMPurify.sanitize(marked.parse(articleEditor.value));
+            markdownPreview.innerHTML = cleanHTML;
         });
 
         cardContentInput.addEventListener('input', () => {
-            cardContentPreview.innerHTML = marked.parse(cardContentInput.value);
+            const cleanHTML = DOMPurify.sanitize(marked.parse(cardContentInput.value));
+            cardContentPreview.innerHTML = cleanHTML;
         });
 
         submitButton.addEventListener('click', () => {

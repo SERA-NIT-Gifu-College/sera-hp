@@ -34,15 +34,6 @@ useSeoMeta(
     margin: 1rem 0;
 }
 
-.news-list > div:has(a) {
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        scale: 105%;
-        filter: grayscale(25%);
-        transition: all 0.3s ease-in-out;
-    }
-}
-
 @media screen and (max-width: 640px) {
     .news-list {
         grid-auto-flow: row;

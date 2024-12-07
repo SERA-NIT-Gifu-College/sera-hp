@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { marked } from "marked";
+import DOMPurify from "isomorphic-dompurify";
 import { EntryType, type NewsEntry } from "~/utils/types/news";
 import type { SlideEntry } from "~/utils/types/slide";
 import SiteInfo from "~/assets/siteinfo.json";
+
+const backgroundImageOptimization = useBackgroundImageOptimization();
+const backgroundImageOptimizer = (path: string) => {
+    backgroundImageOptimization.backgroundImageStyles.value = path;
+    const ret = backgroundImageOptimization.backgroundImageStyles.value;
+    return ret;
+};
 
 const { data } = await useFetch("/api/getNewsList");
 
@@ -58,6 +66,12 @@ const slidesForProjects: Array<SlideEntry> = [
     },
 ];
 
+let slideEntries = ref<Array<SlideEntry>>([
+    ...welcomeSlide,
+    ...getNewsEntriesForSlide(),
+    ...slidesForProjects,
+]);
+
 interface QuickLinkEntry {
     label: string;
     imagePath: string;
@@ -81,10 +95,6 @@ const quickLinkEntries: Array<QuickLinkEntry> = [
         link: "/projects",
     },
 ];
-
-let slideEntries = ref<Array<SlideEntry>>(
-    welcomeSlide.concat(getNewsEntriesForSlide(), slidesForProjects)
-);
 
 onMounted(() => {
     const twitterScript = document.createElement("script");
@@ -110,7 +120,7 @@ useSeoMeta(
             :entries="slideEntries"
             :duration="6000"
             width="100vw"
-            height="max(50svh, 30rem)"
+            height="max(50svh, 32rem)"
             id="slide"
         />
         <div id="quick-links-container">
@@ -119,7 +129,7 @@ useSeoMeta(
                     class="quick-link-entry"
                     v-for="entry in quickLinkEntries"
                     :key="quickLinkEntries.indexOf(entry)"
-                    :style="{ backgroundImage: `url('${entry.imagePath}')` }"
+                    :style="backgroundImageOptimizer(entry.imagePath)"
                 >
                     <NuxtLink :to="entry.link">
                         <h2>{{ entry.label }}</h2>
@@ -150,7 +160,13 @@ useSeoMeta(
                         </div>
                     </div>
                     <article
-                        v-html="marked.parse(entry.cardContent as string)"
+                        v-html="
+                            DOMPurify.sanitize(
+                                marked.parse(
+                                    entry.cardContent as string
+                                ) as string
+                            )
+                        "
                     ></article>
                     <NuxtLink
                         v-if="entry.entryType === EntryType.Article"
@@ -256,12 +272,15 @@ main:last-child {
     #quick-links {
         width: 100vw;
         height: 100vw;
+        min-height: calc(30rem + 2 * var(--quick-link-margin));
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, 1fr);
         margin-inline: 0;
     }
-    .quick-link-entry > a > h2 {
-        font-size: 7cqi;
+    .quick-link-entry {
+        & > a > h2 {
+            font-size: 7cqi;
+        }
     }
 }
 

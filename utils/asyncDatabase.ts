@@ -31,12 +31,14 @@ const asyncDatabaseRead = async <Type>(
     callback: asyncDatabaseRowsCallbackFunction
 ): Promise<Type> => {
     return new Promise((resolve, reject) => {
-        database.all(sqlQuery, (error: Error, rows: any) => {
-            if (error !== null) {
-                reject(error);
-            } else {
-                resolve(callback(rows));
-            }
+        database.serialize(() => {
+            database.all(sqlQuery, (error: Error, rows: any) => {
+                if (error !== null) {
+                    reject(error);
+                } else {
+                    resolve(callback(rows));
+                }
+            });
         });
     });
 };
@@ -57,12 +59,14 @@ const asyncDatabaseWrite = async <Type>(
     callback: asyncDatabaseVoidCallbackFunction
 ): Promise<Type> => {
     return new Promise((resolve, reject) => {
-        database.run(sqlQuery, (error: Error) => {
-            if (error !== null) {
-                reject(error);
-            } else {
-                resolve(callback());
-            }
+        database.serialize(() => {
+            database.run(sqlQuery, (error: Error) => {
+                if (error !== null) {
+                    reject(error);
+                } else {
+                    resolve(callback());
+                }
+            });
         });
     });
 };

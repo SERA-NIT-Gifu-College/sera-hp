@@ -13,9 +13,13 @@ const mobileMaxWidth = 640;
  * @enum {number}
  */
 const enum ViewPortType {
+    // width > 1024
     DESKTOP,
+    // 1024 >= width > 960
     LARGE_TABLET,
+    // 960 >= width > 640
     MEDIUM_TABLET,
+    // 640 >= width
     MOBILE,
 }
 

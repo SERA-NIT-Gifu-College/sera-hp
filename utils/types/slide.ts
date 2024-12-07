@@ -1,6 +1,6 @@
 /**
  * Types for Slide component
- * @module utils/types/slide.ts
+ * @module utils/types/slide
  */
 
 /**

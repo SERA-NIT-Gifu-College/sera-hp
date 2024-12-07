@@ -1,4 +1,31 @@
 <script setup lang="ts">
+const linksList: Array<LinkCardProperty> = [
+    {
+        title: "SERAについて",
+        description: "岐阜工業高等専門学校宇宙工学研究会【SERA】の概要です。",
+        link: "/about/sera",
+        imagePath: "",
+    },
+    {
+        title: "活動実績",
+        description: "SERAの活動実績、受賞歴を紹介します。",
+        link: "/about/achievements",
+        imagePath: "",
+    },
+    {
+        title: "写真集",
+        description: "大会や普段の活動での様子です。",
+        link: "/about/gallery",
+        imagePath: "",
+    },
+    {
+        title: "中学生・新入生向け",
+        description: "部活のFAQを集めてみました。",
+        link: "/about/for-middle-schoolers-and-new-comers",
+        imagePath: "",
+    },
+];
+
 useSeoMeta(
     generateSeoMeta(
         "About Us",
@@ -12,56 +39,30 @@ useSeoMeta(
     <PageTop text="クラブ情報" image-path="/images/page-top.jpg" />
     <PankuzuList />
     <main>
-        <ul>
-            <li>
-                <LinkCard
-                    title="SERAについて"
-                    description="岐阜工業高等専門学校宇宙工学研究会【SERA】の概要です。"
-                    link="/about/sera"
-                />
-            </li>
-            <li>
-                <LinkCard
-                    title="活動実績"
-                    description="SERAの活動実績、受賞歴を紹介します。"
-                    link="/about/achievements"
-                />
-            </li>
-            <li>
-                <LinkCard
-                    title="写真集"
-                    description="大会や普段の活動での様子です。"
-                    link="/about/gallery"
-                />
-            </li>
-            <li>
-                <LinkCard
-                    title="中学生・新入生向け"
-                    description="部活のFAQを集めてみました。"
-                    link="/about/for-middle-schoolers-and-new-comers"
-                />
-            </li>
-        </ul>
+        <LinksGrid id="links" :links="linksList" />
     </main>
 </template>
 
 <style scoped>
-ul {
-    list-style: none;
-    display: grid;
-    gap: 20px;
-    grid: repeat(2, 1fr) / repeat(2, 1fr);
-    width: fit-content;
-    padding: 0;
-    margin: auto;
+main {
+    display: flex;
+    justify-content: center;
 }
 
-@media screen and (max-width: 1024px) {
+#links {
+    width: 80%;
+    max-width: 64rem;
+}
+
+@media screen and (max-width: 960px) {
     main {
         margin: var(--main-margin-top-bottom) 0;
     }
-    ul {
-        grid: repeat(3, 1fr) / 1fr;
+}
+
+@media screen and (max-width: 640px) {
+    main {
+        margin: var(--main-margin-top-bottom) 0;
     }
 }
 </style>

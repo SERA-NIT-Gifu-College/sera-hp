@@ -14,8 +14,10 @@
     },
     "dependencies": {
         "@unhead/schema": "^1.11.6",
+        "isomorphic-dompurify": "^2.17.0",
         "marked": "^14.1.2",
         "nuxt": "^3.12.4",
+        "sharp": "^0.33.5",
         "sqlite3": "^5.1.7",
         "vue": "latest"
     },

@@ -6,8 +6,9 @@
 
 * JavaScript、TypeScript、Vue
 * Nuxt
-* node npm
+* node, npm
 * sqlite
+* typedoc, eslint, prettier
 
 ## コンテンツの管理
 
@@ -21,8 +22,13 @@
 git clone https://git.kenryu.us/kenryuS/sera-new-hp.git # レポジトリをクローン
 cd sera-new-hp # 移動して
 npm install # 依存パッケージのインストール
+
 npm run dev # デベロッパーモードでサーバーを起動
 npm run generate # 静的サイトを生成
+
+npm run lint # 静的解析ツール eslint を実行
+npm run format # prettier を使用してソースコードを整形
+npm run documentation # typedoc でドキュメンテーションを生成
 ```
 
 ## 便利・重要なファイル/フォルダ

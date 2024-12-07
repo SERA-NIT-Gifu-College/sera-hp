@@ -11,6 +11,9 @@ export default defineNuxtConfig({
     dirs: ["utils/types"],
   },
   devtools: { enabled: true },
+  image: {
+    inject: true
+  },
   modules: [
     '@nuxt/image',
     'nuxt-svgo',

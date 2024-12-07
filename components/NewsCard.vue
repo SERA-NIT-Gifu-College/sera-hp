@@ -1,8 +1,23 @@
 <script setup lang="ts">
 import type { NewsCardProperty } from "~/utils/types/newsCard";
+import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";
 
+const { backgroundImageStyles } = useBackgroundImageOptimization();
+const optimizeImage = (backgroundImagePath: string) => {
+    backgroundImageStyles.value = backgroundImagePath;
+    return backgroundImageStyles.value;
+};
+
 const property = defineProps<NewsCardProperty>();
+
+const newsTypeText = ref<string>(
+    property.newsEntry.entryType === EntryType.Article ? "記事" : "お知らせ"
+);
+
+const isArticle = computed(() => {
+    return property.newsEntry.entryType === EntryType.Article;
+});
 
 const datePosted = new Date(
     property.newsEntry.date as number
@@ -16,41 +31,32 @@ const coverImagePath = ref<string>(
 </script>
 
 <template>
-    <div
-        class="news-card"
-        :style="{ backgroundImage: `url(${coverImagePath})` }"
-    >
+    <div class="news-card" :style="optimizeImage(coverImagePath)">
         <NuxtLink
             class="card-content"
-            :to="property.newsEntry.linkPath"
-            v-if="
-                property.newsEntry.linkPath !== null &&
-                property.newsEntry.entryType === EntryType.Article
-            "
+            v-bind:data-type="property.newsEntry.entryType"
+            :to="property.newsEntry.linkPath || ''"
         >
-            <p class="news-type article">記事</p>
+            <p
+                class="news-type"
+                :class="{ article: isArticle, tweet: !isArticle }"
+            >
+                {{ newsTypeText }}
+            </p>
             <p class="new" v-if="property.isNew">NEW!</p>
             <div class="content">
                 <article
                     v-html="
-                        marked.parse(property.newsEntry.cardContent as string)
+                        DOMPurify.sanitize(
+                            marked.parse(
+                                property.newsEntry.cardContent as string
+                            ) as string
+                        )
                     "
                 ></article>
             </div>
             <small>{{ datePosted }}</small>
         </NuxtLink>
-        <div class="card-content" v-else>
-            <p class="news-type tweet">お知らせ</p>
-            <p class="new" v-if="property.isNew">NEW!</p>
-            <div class="content">
-                <article
-                    v-html="
-                        marked.parse(property.newsEntry.cardContent as string)
-                    "
-                ></article>
-            </div>
-            <small>{{ datePosted }}</small>
-        </div>
     </div>
 </template>
 
@@ -66,6 +72,12 @@ const coverImagePath = ref<string>(
     background-position: center;
     background-attachment: local;
     background-size: cover;
+    transition: all 0.3s ease-in-out;
+    &:has(a[data-type="0"]):hover {
+        scale: 105%;
+        filter: grayscale(25%);
+        transition: all 0.3s ease-in-out;
+    }
 }
 
 .card-content {
@@ -78,36 +90,31 @@ const coverImagePath = ref<string>(
     right: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px) brightness(55%);
     color: var(--starlight);
     text-decoration: none;
 }
 
-.card-content .content {
+.card-content > .content {
     font-size: larger;
     font-weight: 400;
     margin-top: 2.75rem;
 }
 
-.card-content article,
-.card-content img {
+.content > article {
     margin: 0 1rem;
 }
 
-.card-content img {
-    margin-top: 3rem;
-    width: 10rem;
-    height: auto;
-    padding: 0.25rem;
-    margin-left: 1.75rem;
+.content > article :deep(a) {
+    font-weight: 600;
+    color: var(--neptune2);
+    &:visited {
+        color: var(--neptune2);
+    }
 }
 
-.card-content img[src="/sera-logo-text.svg"] {
-    background-color: var(--starlight);
-}
-
-.card-content .news-type {
+.card-content > .news-type {
     position: absolute;
     margin: 0;
     padding-top: 0.25rem;
@@ -119,17 +126,17 @@ const coverImagePath = ref<string>(
     border-bottom-right-radius: 1rem;
 }
 
-.card-content .tweet {
+.card-content > .tweet {
     background-color: var(--venus2);
     color: var(--venus1);
 }
 
-.card-content .article {
+.card-content > .article {
     background-color: var(--venus1);
     color: var(--astronaut);
 }
 
-.card-content .new {
+.card-content > .new {
     position: absolute;
     margin: 0;
     right: 0;
@@ -144,7 +151,7 @@ const coverImagePath = ref<string>(
     border-bottom-left-radius: 1rem;
 }
 
-.card-content small {
+.card-content > small {
     position: absolute;
     bottom: 0;
     right: 0;

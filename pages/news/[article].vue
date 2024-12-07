@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";
 
 const route = useRoute();
@@ -30,9 +31,10 @@ onMounted(() => {
     postedDateElement.textContent = "掲載日： " + postedDate;
     articleTitle?.insertAdjacentElement("afterend", postedDateElement);
     const cardContentConversion = document.createElement("div");
-    cardContentConversion.innerHTML = marked.parse(
-        data.value?.cardContent as string
-    ) as string;
+    const purifiedHTML = DOMPurify.sanitize(
+        marked.parse(data.value?.cardContent as string) as string
+    );
+    cardContentConversion.innerHTML = purifiedHTML;
     useSeoMeta(
         generateSeoMeta(
             articleTitle?.innerText as string,
@@ -48,11 +50,17 @@ onMounted(() => {
     <PageTop text="News" image-path="/images/news-top.jpg" />
     <PankuzuList :current-page-name="pankuzuListPageName()" />
     <main>
-        <img :src="(data?.coverImagePath as string) || '/sera-logo-text.svg'" />
+        <NuxtImg
+            :src="(data?.coverImagePath as string) || '/sera-logo-text.svg'"
+        />
         <div
             id="article"
             class="markdown"
-            v-html="marked.parse(data?.article as string)"
+            v-html="
+                DOMPurify.sanitize(
+                    marked.parse(data?.article as string) as string
+                )
+            "
         ></div>
     </main>
 </template>

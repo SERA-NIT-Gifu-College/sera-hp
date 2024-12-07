@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import type { SlideProperty, SlideEntry } from "~/utils/types/slide.ts";
 
+import DOMPurify from "isomorphic-dompurify";
+import { marked } from "marked";
+
 const property = defineProps<SlideProperty>();
-const { viewPortOrientation } = useWindowDimensions();
+const { backgroundImageStyles } = useBackgroundImageOptimization();
+
+const optimizeImage = (backgroundImagePath: string) => {
+    backgroundImageStyles.value = backgroundImagePath;
+    return backgroundImageStyles.value;
+};
 
 const UnitREM = 16;
 const fourREM = 4 * UnitREM;
@@ -169,15 +177,20 @@ onUnmounted(() => {
                 <li
                     v-for="(entry, index) in property.entries"
                     :key="index"
-                    :style="{
-                        backgroundImage: `url('${entry.imagePath}')`,
-                    }"
+                    :style="optimizeImage(entry.imagePath)"
                     v-show="currentSlide === index"
                     class="slide"
                 >
                     <div class="content">
                         <h1>{{ entry.title }}</h1>
-                        <p>{{ entry.content }}</p>
+                        <div
+                            class="rendered-paragraph"
+                            v-html="
+                                DOMPurify.sanitize(
+                                    marked.parse(entry.content) as string
+                                )
+                            "
+                        ></div>
                         <NuxtLink :to="entry.link" v-if="entry.link">
                             詳しくはコチラ
                         </NuxtLink>
@@ -192,7 +205,7 @@ onUnmounted(() => {
                 class="preview"
                 @click="handelClick(entry)"
             >
-                <img :src="entry.imagePath" alt="slide image preview" />
+                <NuxtImg :src="entry.imagePath" alt="slide image preview" />
                 <svg
                     width="72"
                     height="72"
@@ -257,13 +270,24 @@ ul {
         text-align: center;
         color: var(--starlight);
     }
-    & > p {
+    & > :deep(.rendered-paragraph) p {
         height: 3rem;
+        margin: 0;
         justify-self: center;
         color: var(--starlight);
         font-size: clamp(14pt, 1.5cqw, 24pt);
         font-weight: 600;
         text-align: center;
+    }
+    & > :deep(.rendered-paragraph) a {
+        color: var(--neptune2);
+        &:visited {
+            color: var(--neptune2);
+        }
+    }
+    & > .rendered-paragraph {
+        height: 3rem;
+        margin: 1.5rem 0;
     }
     & > a {
         width: fit-content;
@@ -374,10 +398,5 @@ ul {
     .preview {
         margin: calc(1rem / 16) 0;
     }
-}
-
-.portrait-controler {
-    flex-direction: column;
-    right: 0rem;
 }
 </style>

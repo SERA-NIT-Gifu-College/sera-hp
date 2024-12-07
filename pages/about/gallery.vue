@@ -63,7 +63,7 @@ useSeoMeta(
                 :key="entry.id"
             >
                 <figure>
-                    <img :src="entry.imagePath" :alt="entry.caption" />
+                    <NuxtImg :src="entry.imagePath" :alt="entry.caption" />
                     <figcaption>{{ entry.caption }}</figcaption>
                 </figure>
             </div>
@@ -73,7 +73,7 @@ useSeoMeta(
                 <button @click="closeViewer" class="close">
                     <Icon name="ic:baseline-close" />
                 </button>
-                <img :src="imagePathViewer" :alt="captionViewer" />
+                <NuxtImg :src="imagePathViewer" :alt="captionViewer" />
                 <p>{{ captionViewer }}</p>
                 <button @click="changeImage(Direction.FORWARD)" class="next">
                     <Icon name="material-symbols:arrow-forward-rounded" />
@@ -163,6 +163,7 @@ main {
     grid-area: caption;
     justify-self: center;
     align-self: flex-end;
+    margin-inline: 1.25rem;
 }
 
 .image-viewer .close {

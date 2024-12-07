@@ -13,7 +13,7 @@ useSeoMeta(
     <PankuzuList current-page-name="CanSat開発チーム" />
     <main>
         <section>
-            <img
+            <NuxtImg
                 src="/images/cansat_top.jpg"
                 alt="CanSat top image"
                 class="float-left"
@@ -29,7 +29,7 @@ useSeoMeta(
 
         <section>
             <h2>CanSatとは</h2>
-            <img
+            <NuxtImg
                 src="/images/cansat/cansat_01.jpg"
                 alt="CanSat"
                 class="float-right"
@@ -52,7 +52,7 @@ useSeoMeta(
 
         <section>
             <h2>CanSat開発チームの活動</h2>
-            <img
+            <NuxtImg
                 src="/images/cansat/cansat_02.jpg"
                 alt="SERA自作ロケット"
                 class="float-left"
@@ -74,7 +74,7 @@ useSeoMeta(
 
         <section>
             <h3>缶サット甲子園</h3>
-            <img
+            <NuxtImg
                 src="/images/cansat/koshien2020.jpg"
                 alt="缶サット甲子園"
                 class="float-right"
@@ -92,7 +92,7 @@ useSeoMeta(
 
         <section>
             <h3>種子島ロケットコンテスト</h3>
-            <img
+            <NuxtImg
                 src="/images/cansat/seratank-1.png"
                 alt="SERATANK-1"
                 class="float-left"

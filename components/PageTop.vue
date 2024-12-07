@@ -2,10 +2,13 @@
 import type { PageTopProperty } from "~/utils/types/pageTop";
 
 const property = defineProps<PageTopProperty>();
+const backgroundImageOptimizer = useBackgroundImageOptimization();
+
+backgroundImageOptimizer.backgroundImageStyles.value = property.imagePath;
 </script>
 
 <template>
-    <div :style="{ backgroundImage: `url(${property.imagePath})` }">
+    <div :style="backgroundImageOptimizer.backgroundImageStyles.value">
         {{ property.text }}
     </div>
 </template>

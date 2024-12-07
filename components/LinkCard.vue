@@ -1,111 +1,133 @@
 <script setup lang="ts">
 import type { LinkCardProperty } from "~/utils/types/linkCard";
 const property = defineProps<LinkCardProperty>();
-const doesNotHaveImage = ref<boolean>(property.imagePath === undefined);
+const { backgroundImageStyles } = useBackgroundImageOptimization();
+const imagePath =
+    property.imagePath === undefined || property.imagePath === ""
+        ? "/sera-logo-text.svg"
+        : (property.imagePath as string);
+const optimizeImage = (backgroundImagePath: string) => {
+    backgroundImageStyles.value = backgroundImagePath;
+    return backgroundImageStyles.value;
+};
 </script>
 
 <template>
-    <NuxtLink :to="property.link" :class="{ withoutImage: doesNotHaveImage }">
-        <div
-            class="image"
-            v-if="property.imagePath"
-            :style="{ backgroundImage: `url(${property.imagePath})` }"
-        ></div>
-        <h2>{{ property.title }}</h2>
-        <p>{{ property.description }}</p>
-    </NuxtLink>
+    <div class="card-wrapper">
+        <NuxtLink :to="property.link" class="card">
+            <div class="image">
+                <div :style="optimizeImage(imagePath)"></div>
+            </div>
+            <div class="texts">
+                <h2>{{ property.title }}</h2>
+                <p>{{ property.description }}</p>
+            </div>
+        </NuxtLink>
+    </div>
 </template>
 
 <style scoped>
-a {
+.card-wrapper {
+    container: link-card / inline-size;
+}
+
+@property --minimum-card-width {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 320px;
+}
+
+@property --minimum-card-height {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 16rem;
+}
+
+@property --card-padding-inline {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 1rem;
+}
+
+@property --card-padding-vertical {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0.75rem;
+}
+
+.card {
     display: grid;
-    width: 25rem;
-    height: clamp(10rem, 15vh, max(30rem, fit-content));
-    grid: 2fr 1fr 1.5fr / 1fr;
-    background-color: var(--starlight);
-    border-radius: 1rem;
-    text-decoration: none;
-    transition: scale 0.2s ease-in-out;
-}
-
-a:hover {
-    scale: 105%;
-    transition: scale 0.2s ease-in-out;
-}
-
-a > * {
-    margin: 0 2rem;
-}
-
-.withoutImage {
-    grid: 1fr 1.5fr / 1fr;
-}
-
-.image {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 18rem;
-    height: 12rem;
-    margin-top: 1.75rem;
-    margin-bottom: 0.75rem;
-    place-self: center;
-}
-
-h2 {
     position: relative;
-    color: var(--neptune1);
-    background-color: var(--starlight5);
+    grid-template-areas: "image texts";
     border-radius: 1rem;
-    margin: 0.75rem 2rem;
-    padding: 1rem 1.75rem;
-    align-self: center;
-    line-height: 2rem;
-    font-size: clamp(16pt, 3vw, 20pt);
-}
-
-h2::after {
-    display: block;
-    content: "";
-    position: absolute;
-    width: 7px;
-    height: max(2rem, 60%);
-    top: 50%;
-    left: 0.75rem;
-    transform: translateY(-50%);
-    background-color: var(--neptune1);
-    border-radius: 3px;
-}
-
-p {
-    color: var(--deep-space);
-    margin: 0 2rem;
-}
-
-@media screen and (max-width: 1024px) {
-    a {
-        width: 20rem;
-    }
-    a > * {
-        margin: unset 0.25rem;
-    }
-    .image {
-        width: 16rem;
-        height: 10rem;
+    box-shadow: 10px 5px 5px var(--starlight1);
+    background-color: var(--starlight);
+    min-width: calc(var(--minimum-card-width) - 2 * var(--card-padding-inline));
+    min-height: calc(
+        var(--minimum-card-height) - 2 * var(--card-padding-vertical)
+    );
+    padding: var(--card-padding-vertical) var(--card-padding-inline);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    aspect-ratio: 5 / 2;
+    &:hover {
+        scale: 105%;
+        transition: all 0.3s ease-in-out;
     }
 }
 
-@media screen and (max-width: 640px) {
-    a {
-        width: 16rem;
+.card > .image {
+    grid-area: image;
+    min-width: 128px;
+    width: 30cqw;
+    align-content: center;
+    & > div {
+        aspect-ratio: 1 / 1;
+        background: inherit;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: local;
+        background-size: cover;
+        border-radius: 1rem;
+        margin-inline: 0.75rem;
     }
-    a > * {
-        margin: unset 0.75rem;
+}
+
+.card > .texts {
+    grid-area: texts;
+    margin-inline: 0.75rem;
+    height: 50cqw;
+    width: 60cqw;
+    & > h2 {
+        color: var(--ocean-blue);
+        height: 15cqw;
+        margin-bottom: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        align-content: center;
     }
-    .image {
-        width: 12rem;
-        height: 8rem;
-        margin-top: 0.75rem;
+    & > p {
+        color: var(--deep-space);
+        height: 25cqw;
+        margin-top: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@container link-card (width < 28rem) {
+    .card {
+        padding: 0.5rem 0;
+    }
+    .card > .image {
+        min-width: 96px;
+    }
+    .card > .texts > p {
+        height: 75px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
     }
 }
 </style>

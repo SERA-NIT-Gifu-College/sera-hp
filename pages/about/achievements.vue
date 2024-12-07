@@ -28,7 +28,7 @@ useSeoMeta(
         </section>
 
         <section>
-            <img
+            <NuxtImg
                 src="/images/koshien2020_mission-rogo.png"
                 alt="2020 Mission Logo"
                 class="float-right"
@@ -58,7 +58,7 @@ useSeoMeta(
         <section>
             <h3>種子島ロケットコンテスト</h3>
             <h4>滑空・定点回収</h4>
-            <img
+            <NuxtImg
                 src="/images/rocket_top.jpg"
                 alt="rockets"
                 class="float-right"
@@ -93,7 +93,7 @@ useSeoMeta(
             </ul>
             <br />
             <h4>CanSat</h4>
-            <img
+            <NuxtImg
                 src="/images/cansat/cansat_03.jpg"
                 alt="Sample Image"
                 class="float-right"
@@ -145,7 +145,7 @@ useSeoMeta(
 
         <section>
             <h2>その他活動実績 (イベントなど)</h2>
-            <img
+            <NuxtImg
                 src="/images/uchu_fea.jpg"
                 alt="Sample Image"
                 class="float-right"

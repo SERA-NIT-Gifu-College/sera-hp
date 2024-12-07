@@ -15,7 +15,11 @@ useSeoMeta(
     <PankuzuList current-page-name="SERAについて" />
     <main>
         <section>
-            <img src="/sera-logo-text.svg" alt="SERA Logo" class="float-left" />
+            <NuxtImg
+                src="/sera-logo-text.svg"
+                alt="SERA Logo"
+                class="float-left"
+            />
             <p>
                 宇宙分野に興味ある学生が集い、宇宙理工学に関する知識を身に付けると共に、宇宙分野に関連する各種競技会へ参加して人間力と実践力を養うことを目的に活動しています。
             </p>

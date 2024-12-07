@@ -13,7 +13,7 @@ useSeoMeta(
     <PankuzuList current-page-name="Rocket開発チーム" />
     <main>
         <section>
-            <img
+            <NuxtImg
                 src="/images/rocket_top.jpg"
                 alt="Rocket top image"
                 class="float-left"
@@ -29,7 +29,7 @@ useSeoMeta(
 
         <section>
             <h2>モデルロケットとは</h2>
-            <img
+            <NuxtImg
                 src="/images/rocket/alpha3.jpg"
                 alt="Alpha III"
                 class="float-right"
@@ -57,7 +57,7 @@ useSeoMeta(
 
         <section>
             <h2>Rocket開発チームの活動</h2>
-            <img
+            <NuxtImg
                 src="/images/rocket/rocket_02.jpg"
                 alt="2 staged rocket"
                 class="float-left"

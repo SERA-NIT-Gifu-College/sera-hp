@@ -68,7 +68,7 @@ useSeoMeta(
         </section>
 
         <section>
-            <img src="/images/kosen1_gunma-cgv5-a.JPG" alt="KOSEN-1" />
+            <NuxtImg src="/images/kosen1_gunma-cgv5-a.JPG" alt="KOSEN-1" />
             <p>画像：菅原達弥(群馬高専)</p>
         </section>
     </main>

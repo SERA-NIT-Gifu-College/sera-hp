@@ -30,7 +30,7 @@ useSeoMeta(
 
         <section>
             <h3>AlphaⅢ</h3>
-            <img
+            <NuxtImg
                 src="/images/rocket/alpha3.jpg"
                 alt="Alpha III"
                 class="float-left"
@@ -44,7 +44,7 @@ useSeoMeta(
 
         <section>
             <h3>Raspberry Pi</h3>
-            <img
+            <NuxtImg
                 src="/images/education/raspberry-pi-4.jpg"
                 alt="Raspberry Pi 4"
                 class="float-right"
@@ -79,7 +79,7 @@ useSeoMeta(
 
         <section>
             <h2>教育用ローバーの開発</h2>
-            <img
+            <NuxtImg
                 src="/images/education/education-1.jpg"
                 alt="教育用ローバー"
                 class="float-left"

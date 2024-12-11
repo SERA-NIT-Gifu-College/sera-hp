@@ -215,7 +215,10 @@ onUnmounted(() => {
                     <circle r="32" cx="36" cy="36" fill="transparent" />
                 </svg>
             </div>
-            <button @click="toggleAutoSlide">
+            <button
+                @click="toggleAutoSlide"
+                aria-label="Toggle slide animation"
+            >
                 <Icon :name="controlIconName" />
             </button>
         </div>

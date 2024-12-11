@@ -61,7 +61,10 @@ const hamburgerMenuEntries: Array<DropDownEntry> = [
                 />
             </div>
             <div id="logo-link">
-                <NuxtLink to="/">
+                <NuxtLink
+                    to="/"
+                    aria-label="Button to navigate back to the home page"
+                >
                     <LogoSVG role="img" id="logo-img" />
                 </NuxtLink>
             </div>

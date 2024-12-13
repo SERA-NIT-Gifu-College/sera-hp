@@ -129,6 +129,7 @@ const showThePast = (event: Event) => {
                                     mouseover: showThePast,
                                     mouseleave: showThePast,
                                 }"
+                                aria-label="X/Twitter account of SERA."
                             >
                                 <Transition name="show-the-past">
                                     <Icon
@@ -148,6 +149,7 @@ const showThePast = (event: Event) => {
                             <NuxtLink
                                 to="https://www.instagram.com/sera_nitgc_official"
                                 target="_blank"
+                                aria-label="Instagram account of SERA."
                             >
                                 <Icon name="simple-icons:instagram" />
                             </NuxtLink>
@@ -156,6 +158,7 @@ const showThePast = (event: Event) => {
                             <NuxtLink
                                 to="https://github.com/SERA-NIT-Gifu-College"
                                 target="_blank"
+                                aria-label="Github organization of SERA."
                             >
                                 <Icon name="simple-icons:github" />
                             </NuxtLink>

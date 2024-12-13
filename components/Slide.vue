@@ -205,7 +205,13 @@ onUnmounted(() => {
                 class="preview"
                 @click="handelClick(entry)"
             >
-                <NuxtImg :src="entry.imagePath" alt="slide image preview" />
+                <NuxtImg
+                    :src="entry.imagePath"
+                    alt="slide image preview"
+                    format="webp"
+                    width="64"
+                    height="64"
+                />
                 <svg
                     width="72"
                     height="72"
@@ -215,7 +221,10 @@ onUnmounted(() => {
                     <circle r="32" cx="36" cy="36" fill="transparent" />
                 </svg>
             </div>
-            <button @click="toggleAutoSlide">
+            <button
+                @click="toggleAutoSlide"
+                aria-label="Toggle slide animation"
+            >
                 <Icon :name="controlIconName" />
             </button>
         </div>

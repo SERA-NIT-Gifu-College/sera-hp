@@ -63,7 +63,14 @@ useSeoMeta(
                 :key="entry.id"
             >
                 <figure>
-                    <NuxtImg :src="entry.imagePath" :alt="entry.caption" />
+                    <NuxtImg
+                        :src="entry.imagePath"
+                        :alt="entry.caption"
+                        width="240"
+                        height="160"
+                        fit="cover"
+                        placeholder="[240, 160, 75, 5]"
+                    />
                     <figcaption>{{ entry.caption }}</figcaption>
                 </figure>
             </div>

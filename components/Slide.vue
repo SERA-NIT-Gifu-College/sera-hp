@@ -205,7 +205,13 @@ onUnmounted(() => {
                 class="preview"
                 @click="handelClick(entry)"
             >
-                <NuxtImg :src="entry.imagePath" alt="slide image preview" />
+                <NuxtImg
+                    :src="entry.imagePath"
+                    alt="slide image preview"
+                    format="webp"
+                    width="64"
+                    height="64"
+                />
                 <svg
                     width="72"
                     height="72"

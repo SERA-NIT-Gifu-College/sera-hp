@@ -109,7 +109,7 @@ useSeoMeta(
     generateSeoMeta(
         "ホーム",
         "岐阜高専宇宙工学研究会のホームページ",
-        "/sera-logo-text.svg"
+        "/sera-hp/sera-logo-text.svg"
     )
 );
 </script>
@@ -160,6 +160,7 @@ useSeoMeta(
                         </div>
                     </div>
                     <article
+                        v-if="entry.entryType === EntryType.Tweet"
                         v-html="
                             DOMPurify.sanitize(
                                 marked.parse(
@@ -172,8 +173,16 @@ useSeoMeta(
                         v-if="entry.entryType === EntryType.Article"
                         :to="entry.linkPath as string"
                     >
-                        <Icon name="material-symbols:arrow-forward-rounded" />
-                        <div>Read More</div>
+                        <article
+                            v-html="
+                                DOMPurify.sanitize(
+                                    marked.parse(
+                                        entry.cardContent as string
+                                    ) as string
+                                )
+                            "
+                        ></article>
+                        <Icon name="material-symbols:arrow-outward-rounded" />
                     </NuxtLink>
                 </li>
             </ul>
@@ -345,7 +354,7 @@ main:last-child {
     & li a span {
         height: 24px;
         width: 24px;
-        margin-right: 0.125rem;
+        margin-left: 0.25rem;
     }
 }
 
@@ -398,9 +407,6 @@ main:last-child {
         }
         & li .new-label {
             margin: 0.5rem auto;
-        }
-        & li a div {
-            display: none;
         }
         & li a span {
             width: 32px;

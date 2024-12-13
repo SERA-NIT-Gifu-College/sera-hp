@@ -35,7 +35,7 @@ const coverImagePath = ref<string>(
         <NuxtLink
             class="card-content"
             v-bind:data-type="property.newsEntry.entryType"
-            :to="isArticle ? property.newsEntry.linkPath as string : ''"
+            :to="isArticle ? (property.newsEntry.linkPath as string) : ''"
             :aria-disabled="!isArticle"
             :role="isArticle ? 'link' : 'gridcell'"
         >

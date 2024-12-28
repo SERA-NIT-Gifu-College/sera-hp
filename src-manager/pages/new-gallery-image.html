@@ -10,7 +10,7 @@
             grid-auto-flow: row;
         }
 
-        #new-news {
+        #new-gallery-image {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
@@ -23,7 +23,6 @@
 </head>
 <body>
     <div id="new-gallery-image">
-        <h3></h3>
         <form id="create-entry" hx-post="/api/gallery-image" hx-swap="none">
             <fieldset>
                 <legend>Create Entry</legend>
@@ -39,10 +38,20 @@
                 </button>
             </a>
         </form>
+        <div>
+            <img src="" alt="" id="preview" />
+        </div>
     </div>
 
     <script>
         const submitButton = document.getElementById('submit-button');
+        const imagePathInput = document.getElementById('imagePath');
+        const preview = document.getElementById('preview');
+
+        imagePathInput.addEventListener('input', () => {
+            const inputtedText = imagePathInput.value;
+            preview.setAttribute("src", "/sera-hp" + inputtedText);
+        });
 
         submitButton.addEventListener('click', () => {
             window.location.href = "/index.html";

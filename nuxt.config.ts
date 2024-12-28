@@ -2,7 +2,16 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   app: {
-    baseURL: '/sera-hp/'
+    baseURL: '/sera-hp/',
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/svg+xml",
+          href: "/sera-hp/facivon.svg"
+        }
+      ],
+    },
   },
   routeRules: {
     '/': { prerender: true },

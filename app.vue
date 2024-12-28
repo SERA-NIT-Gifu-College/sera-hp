@@ -7,7 +7,6 @@ useHead({
             ? `${titleChunk} - 岐阜高専宇宙工学研究会 ${SiteInfo.clubNameAbbreviation}`
             : `岐阜高専宇宙工学研究会 ${SiteInfo.clubNameAbbreviation}`;
     },
-    link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
     htmlAttrs: {
         lang: "ja",
     },

@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'pages')));
 app.use(express.static(path.join(__dirname, "../assets")));
-app.use(express.static(path.join(__dirname, "../public")));
+app.use('/sera-hp', express.static(path.join(__dirname, "../public")));
 
 app.use('/api', router);
 

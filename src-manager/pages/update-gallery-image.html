@@ -11,7 +11,7 @@
             grid-auto-flow: row;
         }
 
-        #new-news {
+        #update-gallery-image {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
@@ -19,15 +19,15 @@
         #preview {
             border: black solid 1px;
             height: 100%;
+            max-width: 40vw;
         }
     </style>
 </head>
 <body>
-    <div id="new-gallery-image">
-        <h3></h3>
+    <div id="update-gallery-image">
         <form id="create-entry" hx-put="/api/gallery-image" hx-swap="none">
             <fieldset>
-                <legend>Create Entry</legend>
+                <legend>Update Entry</legend>
                 <label for="imagePath">Image Path:</label>
                 <input type="text" name="imagePath" id="imagePath">
                 <label for="caption">Caption of Image:</label>
@@ -42,6 +42,9 @@
                 </button>
             </a>
         </form>
+        <div>
+            <img id="preview" />
+        </div>
     </div>
 
     <script>
@@ -51,12 +54,19 @@
         const targetInput = document.getElementById('targetValue');
         const urlParams = new URLSearchParams(window.location.search);
         const targetEntry = urlParams.get('target');
+        const preview = document.getElementById('preview');
+
+        imagePathInput.addEventListener('input', () => {
+            const inputtedText = imagePathInput.value;
+            preview.setAttribute("src", "/sera-hp" + inputtedText);
+        });
 
         axios.get('/api/gallery-image', {params: {target: targetEntry}})
             .then((response) => {
                 targetInput.value = response.data.id;
                 imagePathInput.value = response.data.imagePath;
                 captionInput.value = response.data.caption;
+                preview.setAttribute("src", "/sera-hp" + response.data.imagePath);
             })
             .catch((err) => {console.error(err)});
 

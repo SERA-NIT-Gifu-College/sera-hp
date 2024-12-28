@@ -15,21 +15,35 @@
             display: grid;
             grid-auto-flow: row;
         }
+        
+        #editor {
+            grid-area: editor;
+        }
 
         #new-news {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                "editor preview"
+                "help preview";
         }
 
         #preview {
             border: black solid 1px;
-            height: 100%;
+            height: 100vh;
+            grid-area: preview;
+            overflow-y: scroll;
+        }
+
+        #help {
+            grid-area: help;
         }
     </style>
 </head>
 <body>
     <div id="new-news">
-        <div>
+        <div id="editor">
             <h3>New News</h3>
             <form id="create-entry" hx-post="/api/news" hx-swap="none">
                 <fieldset>
@@ -67,6 +81,11 @@
             <div id="preview-card-content"></div>
             <h4>Article</h4>
             <div id="preview-article" class="markdown"></div>
+        </div>
+        <div id="help">
+            <h3>Help And Notice</h3>
+            <p>Since Nuxt.js won't prepend baseURL("/sera-hp") to the Markdown generated article, you need to prepend baseURL on image path.</p>
+            <p>Cover image will prepend baseURL so it should not required to prepend baseURL.</p>
         </div>
     </div>
 

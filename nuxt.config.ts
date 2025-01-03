@@ -8,10 +8,13 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/svg+xml",
-          href: "/sera-hp/facivon.svg"
+          href: "/sera-hp/favicon.svg"
         }
       ],
     },
+  },
+  nitro: {
+    preset: "github_pages"
   },
   routeRules: {
     '/': { prerender: true },
@@ -27,8 +30,15 @@ export default defineNuxtConfig({
     inject: true
   },
   site: {
-    url: "https://sera-nit-gifu-college.github.io/sera-hp/",
-    name: "SERA Home Page"
+    url: "https://sera-nit-gifu-college.github.io",
+    name: "SERA Home Page",
+    indexable: true,
+    defaultLocale: "ja-jp"
+  },
+  icon: {
+    serverBundle: {
+        collections: ['material-symbols', 'hugeicons', 'ic', 'simple-icons']
+    },
   },
   modules: [
     '@nuxt/image',

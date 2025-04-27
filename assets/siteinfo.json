@@ -3,25 +3,37 @@
     "clubNameLong": "Space Engineering Research Association",
     "copyrightYear": 2025,
     "memberDepartmentRatio": {
-        "date": "2024-9-17",
-        "mechanicalEng": 12,
+        "date": "2025-4-16",
+        "mechanicalEng": 7,
         "elecAndComp": 3,
         "elecControl": 14,
-        "civilEng": 2,
-        "architecture": 3
+        "civilEng": 1,
+        "architecture": 0
     },
     "memberGradeRatio": {
-        "date": "2024-9-17",
-        "first": 14,
-        "second": 11,
-        "third": 7,
-        "fourth": 1,
-        "fifth": 1
+        "date": "2025-4-16",
+        "first": 9,
+        "second": 5,
+        "third": 3,
+        "fourth": 6,
+        "fifth": 2
     },
-    "advisor": {
-        "name": "佐藤 敦（さとう あつし）",
-        "department": "機械工学科",
-        "description": "精密加工に関する研究をされています。"
-    },
-    "headOfClub": "５年機械工学科 瀨 仁一郎"
+    "advisor": [
+        {
+            "name": "河野 託也",
+            "department": "電子制御工学科",
+            "description": "レーザーについて研究されており、専門分野は応用物理学で4年の担任をされています。"
+        },
+        {
+            "name": "三宅 晶子",
+            "department": "電気情報工学科",
+            "description": "専門分野は宇宙線物理学や放射線物理学、応用数学Bと応用物理IIを担当されています。"
+        },
+        {
+            "name": "柴田 良一",
+            "department": "建築学科",
+            "description": "構造解析学について研究されています。"
+        }
+    ],
+    "headOfClub": "4年機械工学科 大野 結生"
 }

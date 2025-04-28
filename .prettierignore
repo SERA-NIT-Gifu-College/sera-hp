@@ -28,3 +28,10 @@ src-manager
 eslint.config.js
 nuxt.config.ts
 docs
+
+# Nix
+*.nix
+flake.lock
+
+# GitHub
+.github

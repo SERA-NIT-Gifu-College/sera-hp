@@ -182,11 +182,9 @@ useSeoMeta(
 
         <QAndABox question="顧問の先生はどのような先生ですか？">
             <ul>
-                <li
-                    v-for="advisor in SiteInfo.advisor"
-                    :key="advisor"
-                >
-                    {{ advisor.name }} 教員：{{ advisor.department}}に所属。 {{ advisor.description }}
+                <li v-for="advisor in SiteInfo.advisor" :key="advisor">
+                    {{ advisor.name }} 教員：{{ advisor.department }}に所属。
+                    {{ advisor.description }}
                 </li>
             </ul>
         </QAndABox>

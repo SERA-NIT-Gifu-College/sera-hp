@@ -16,7 +16,7 @@
         "@unhead/schema": "latest",
         "isomorphic-dompurify": "latest",
         "marked": "latest",
-        "nuxt": "^3.16.0",
+        "nuxt": "^3.16.2",
         "sharp": "latest",
         "sqlite3": "latest",
         "vue": "latest"

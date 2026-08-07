@@ -23,6 +23,8 @@ git clone https://git.kenryu.us/kenryuS/sera-new-hp.git # レポジトリをク�
 cd sera-new-hp # 移動して
 npm install # 依存パッケージのインストール
 
+source getPath.bash # 環境変数をロード
+
 npm run dev # デベロッパーモードでサーバーを起動
 npm run generate # 静的サイトを生成
 
@@ -40,4 +42,4 @@ npm run documentation # typedoc でドキュメンテーションを生成
 * `assets/pankuzuEntries.json`: パンくずリストで使用される主なページのリンクと名前の紐付けが列挙されている
 * `docs/`: `typedoc`で生成されたドキュメンテーションが入っている、`python -m http.server`などで`localhost`にホストして読む
 * `dist/`, `.output/`: `npm run generate`で生成された静的ウェブサイト本体、プロダクションレディーな状態 `dist/`は`.output/`へのリンクである
-
+* `getPath.bash`: ビルドに必要な環境変数が定義されている

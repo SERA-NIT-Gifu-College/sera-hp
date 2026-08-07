@@ -4,13 +4,12 @@
  */
 
 import sqlite3 from "sqlite3";
+import { open } from 'sqlite';
 import path from "path";
-import { fileURLToPath } from "url";
 import { asyncDatabaseRead } from "~/utils/asyncDatabase";
 import type { ArticleInfo } from "~/utils/types/news";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const dbPath = process.env.DATABASE_PATH + "news.db";
 
 /**
  * Handler of getArticle event. Entry is selected by linkPath
@@ -18,9 +17,11 @@ const __dirname = path.dirname(__filename);
  * @returns {ArticleInfo} - object that contains information and content of article
  */
 const getArticleEventHandler = defineEventHandler(async (event: any) => {
-    const database = new sqlite3.Database(
-        path.join(__dirname, "../../assets/databases/news.db")
-    );
+    const database = await open({
+        filename: dbPath,
+        mode: sqlite3.OPEN_READONLY,
+        driver: sqlite3.Database
+    });
 
     let res: ArticleInfo = {
         date: 0,
@@ -35,7 +36,7 @@ const getArticleEventHandler = defineEventHandler(async (event: any) => {
 
     try {
         const entry: ArticleInfo = await asyncDatabaseRead<ArticleInfo>(
-            database,
+            database.getDatabaseInstance(),
             sql,
             (rows) => {
                 return rows[0] as ArticleInfo;

@@ -3,13 +3,11 @@
  * @module api/getGalleryImages
  */
 import sqlite3 from "sqlite3";
-import path from "path";
-import { fileURLToPath } from "url";
+import { open } from 'sqlite';
 import type { GalleryEntry } from "~/utils/types/galleryEntry";
 import { asyncDatabaseRead } from "~/utils/asyncDatabase";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const dbPath = process.env.DATABASE_PATH + "gallery.db";
 
 /**
  * Handler of getImages event
@@ -17,9 +15,11 @@ const __dirname = path.dirname(__filename);
  * @returns {Array<GalleryEntry>} list of image entry
  */
 const getGalleryImagesEventHandler = defineEventHandler(async (event: any) => {
-    const database = new sqlite3.Database(
-        path.join(__dirname, "../../assets/databases/gallery.db")
-    );
+    const database = await open({
+        filename: dbPath,
+        mode: sqlite3.OPEN_READONLY,
+        driver: sqlite3.Database
+    });
 
     const sql = `SELECT * FROM gallery;`;
 
@@ -27,7 +27,7 @@ const getGalleryImagesEventHandler = defineEventHandler(async (event: any) => {
 
     try {
         res = await asyncDatabaseRead<Array<GalleryEntry>>(
-            database,
+            database.getDatabaseInstance(),
             sql,
             (rows) => {
                 return rows as Array<GalleryEntry>;

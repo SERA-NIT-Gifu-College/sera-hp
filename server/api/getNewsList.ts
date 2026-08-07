@@ -4,13 +4,11 @@
  */
 
 import sqlite3 from "sqlite3";
-import path from "path";
-import { fileURLToPath } from "url";
+import { open } from 'sqlite';
 import { asyncDatabaseRead } from "~/utils/asyncDatabase";
 import type { NewsEntry } from "~/utils/types/news";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const dbPath = process.env.DATABASE_PATH + "news.db";
 
 /**
  * Handler of getArticleList event
@@ -18,16 +16,19 @@ const __dirname = path.dirname(__filename);
  * @returns {Array<NewsEntry>} list of news
  */
 const getArticleListEventHandler = defineEventHandler(async (event: any) => {
-    const database = new sqlite3.Database(
-        path.join(__dirname, "../../assets/databases/news.db")
-    );
+    const database = await open({
+        filename: dbPath,
+        mode: sqlite3.OPEN_READONLY,
+        driver: sqlite3.Database
+    });
+
     const sql = `SELECT date, entryType, cardContent, linkPath, coverImagePath FROM news ORDER BY date DESC;`;
 
     let res: Array<NewsEntry> = new Array<NewsEntry>(0);
 
     try {
         res = await asyncDatabaseRead<Array<NewsEntry>>(
-            database,
+            database.getDatabaseInstance(),
             sql,
             (rows) => {
                 return rows as Array<NewsEntry>;

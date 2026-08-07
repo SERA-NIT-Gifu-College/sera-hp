@@ -1,19 +1,22 @@
 {
-  description = "Generic Node.js Template";
+  description = "SERA HP Dev env";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+        };
         pname = "SERA-HP";
         version = "0.0.1";
         buildInputs = with pkgs; [
-          nodejs_22
+          nodejs_24
+          neovim
         ];
         nativeBuildInputs = buildInputs;
       in

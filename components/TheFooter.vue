@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LogoSVG from "public/sera-logo-no-text.svg";
-import SiteInfo from "assets/siteinfo.json";
+import LogoSVG from "~/public/sera-logo-no-text.svg";
+import SiteInfo from "~/assets/siteinfo.json";
 
 const showTwitterIcon = ref<boolean>(false);
 

@@ -1,33 +1,33 @@
 {
     "clubNameAbbreviation": "SERA",
     "clubNameLong": "Space Engineering Research Association",
-    "copyrightYear": 2025,
+    "copyrightYear": 2026,
     "memberDepartmentRatio": {
-        "date": "2025-4-16",
+        "date": "2026-10-24",
         "mechanicalEng": 7,
-        "elecAndComp": 3,
-        "elecControl": 14,
+        "elecAndComp": 2,
+        "elecControl": 13,
         "civilEng": 1,
         "architecture": 0
     },
     "memberGradeRatio": {
-        "date": "2025-4-16",
-        "first": 9,
-        "second": 5,
+        "date": "2026-10-24",
+        "first": 6,
+        "second": 6,
         "third": 3,
-        "fourth": 6,
-        "fifth": 2
+        "fourth": 2,
+        "fifth": 6
     },
     "advisor": [
         {
             "name": "河野 託也",
             "department": "電子制御工学科",
-            "description": "レーザーについて研究されており、専門分野は応用物理学で4年の担任をされています。"
+            "description": "レーザーについて研究されており、専門分野は応用物理学です。"
         },
         {
-            "name": "三宅 晶子",
-            "department": "電気情報工学科",
-            "description": "専門分野は宇宙線物理学や放射線物理学、応用数学Bと応用物理IIを担当されています。"
+            "name": "遠藤 登",
+            "department": "電子制御工学科",
+            "description": "情報数理工学や制御工学について研究されています。"
         },
         {
             "name": "柴田 良一",
